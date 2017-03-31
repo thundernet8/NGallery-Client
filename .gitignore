@@ -8,3 +8,4 @@ release/
 .idea/
 .vscode/
 debug.log
+.npmrc

@@ -7,7 +7,7 @@
     "build": "rimraf dist && mkdirp dist && cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.prod.conf.babel.js",
     "build:dev": "rimraf dist && mkdirp dist && cross-env NODE_ENV=development webpack --progress --hide-modules --config build/webpack.dev.conf.babel.js",
     "start:dev": "cross-env NODE_ENV=development node -r babel-register server",
-    "start": "cross-env NODE_ENV=production nodemon -r babel-register server"
+    "start": "npm run build && cross-env NODE_ENV=production nodemon -r babel-register server"
   },
   "repository": {
     "type": "git",
