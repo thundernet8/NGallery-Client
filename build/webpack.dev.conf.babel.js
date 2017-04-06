@@ -5,15 +5,13 @@ import merge              from 'webpack-merge'
 import HtmlWebpackPlugin  from 'html-webpack-plugin'
 import config             from '../config'
 
-const port = config.port || 3000
-
 let devConfig = {
   // eval-source-map is faster for development
   devtool: '#source-map', // '#eval-source-map',
 
   entry: {
     app: [
-      `webpack-hot-middleware/client?path=http://www.fuli.news:${port}/__webpack_hmr`,
+      `webpack-hot-middleware/client?path=${config.home}/__webpack_hmr`, // TODO fix
       'babel-polyfill',
       './src/index.jsx'
     ]
@@ -21,7 +19,7 @@ let devConfig = {
 
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: `http://www.fuli.news:${port}`
+    publicPath: config.static
   },
 
   module: {
@@ -45,8 +43,10 @@ let devConfig = {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
         template: 'src/index.html',
-        filename: '../dist/index.html',
-        inject: true
+        filename: '../dist/index.ejs',
+        inject: true,
+        meta: '<%- meta %>',
+        reduxState: '<%- reduxState %>'
     })
   ]
 }

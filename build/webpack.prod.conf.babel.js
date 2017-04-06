@@ -8,8 +8,6 @@ import config                         from '../config'
 
 baseConfig.entry = {}
 
-const port = config.port || 8080
-
 let appProdConfig = {
   // whether to generate source map for production files.
   // disabling this can speed up the build.
@@ -25,12 +23,15 @@ let appProdConfig = {
         'react-dom',
         'react-router',
         'react-router-redux',
+        'react-cookie',
         'babel-polyfill',
         'redux',
         'redux-thunk',
         'react-redux',
         //'react-ga',
         'axios',
+        'material-ui',
+        'rc-notification'
     ]
   },
 
@@ -38,7 +39,7 @@ let appProdConfig = {
     filename: '[name].[chunkhash:8].js',
     chunkFilename: '[id].js',
     path: path.resolve(__dirname, '../dist'),
-    publicPath: `http://www.fuli.news:${port}`
+    publicPath: config.static
   },
 
   module: {
@@ -72,13 +73,15 @@ let appProdConfig = {
     }),
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: '../dist/index.html',
+      filename: '../dist/index.ejs',
       template: 'src/index.html',
       inject: true,
+      meta: '<%- meta %>',
+      reduxState: '<%- reduxState %>',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: true,
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       }

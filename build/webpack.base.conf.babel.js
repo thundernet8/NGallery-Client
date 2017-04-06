@@ -14,7 +14,7 @@ export default {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss'],
+    extensions: ['.json', '.js', '.jsx', '.css', '.scss'],
     modules: [
       path.join(__dirname, '../node_modules')
     ],
@@ -110,6 +110,6 @@ export default {
   },
   plugins: [
       // extract css to one file
-      new ExtractTextPlugin({filename: process.env.NODE_ENV === 'production' ? 'style.min.css' : 'style.css', disable: false, allChunks: true}),
+      new ExtractTextPlugin({filename: process.env.NODE_ENV === 'production' ? 'style.min.[hash:8].css' : 'style.css', disable: false, allChunks: true}),
   ]
 }

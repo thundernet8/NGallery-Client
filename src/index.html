@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Client</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <%= htmlWebpackPlugin.options.meta %>
+    <link rel="shortcut icon" href="<%= require('./assets/images/favicon.png') %>">
+    <!--script async="" src="https://www.google-analytics.com/analytics.js"></script--><!-- Google analysis -->
   </head>
   <body>
-
+    <noscript class="_fail">JavaScript required to run this website.</noscript>
+    <div id="app"></div>
+    <script>window.__initState__ = <%= htmlWebpackPlugin.options.reduxState %></script>
   </body>
 </html>
