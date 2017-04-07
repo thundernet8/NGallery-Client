@@ -6,9 +6,7 @@ import { combineReducers }                                      from 'redux'
 import configureStore                                           from './store/configureStore'
 import createRouter                                             from './routes'
 import LocalProvider                                            from './i18n/provider'
-import MuiThemeProvider                                         from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme                                              from 'material-ui/styles/getMuiTheme'
-import { blue500 }                                              from 'material-ui/styles/colors'
+import ThemeProvider                                            from './components/muiTheme'
 import injectTapEventPlugin                                     from 'react-tap-event-plugin'
 import './styles/global/global.scss'
 
@@ -25,19 +23,13 @@ if (module.hot) {
     })
 }
 
-const muiTheme = getMuiTheme({
-    palette: {
-        primary1Color: blue500
-    }
-})
-
 ReactDOM.render(
-    <MuiThemeProvider muiTheme={muiTheme}>
-        <LocalProvider>
+    <ThemeProvider>
+        <LocalProvider language={navigator.language}>
             <Provider store={store}>
                 {createRouter(createBrowserHistory(), (me.profile && me.profile._id) ? me : null)}
             </Provider>
         </LocalProvider>
-    </MuiThemeProvider>,
+    </ThemeProvider>,
     document.getElementById('app')
 )

@@ -9,7 +9,7 @@
   </head>
   <body>
     <noscript class="_fail">JavaScript required to run this website.</noscript>
-    <div id="app"></div>
+    <div id="app"><%= htmlWebpackPlugin.options.htmlDom %></div>
     <script>window.__initState__ = <%= htmlWebpackPlugin.options.reduxState %></script>
   </body>
 </html>

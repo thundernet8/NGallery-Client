@@ -10,8 +10,8 @@ import appConfig                                                            from
 import App from './containers/app'
 import Home from './containers/home'
 
-const saveToken = () => {
-    const authInfo = getUrlQuery(appConfig.authInfoKey)
+const saveToken = (state) => {
+    const authInfo = getUrlQuery(appConfig.authInfoKey, state.location.search)
     if (authInfo) {
         let infoObj = JSON.parse(Base64.decode(authInfo))
         if (infoObj.token && infoObj.expires && infoObj.expires > (new Date()).getTime()) {
@@ -23,7 +23,7 @@ const saveToken = () => {
 
 export default (history, user) => {
     const triggerEnter = (nextState, replaceState) => {
-        saveToken()
+        saveToken(nextState)
     }
 
     const triggerLeave = (nextState, replaceState) => {

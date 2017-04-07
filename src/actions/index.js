@@ -1,8 +1,6 @@
-import * as login           from './login'
-import * as register        from './register'
+import * as user           from './user'
 
 export default Object.assign(
     {},
-    login,
-    register
+    user
 )

@@ -1,5 +1,4 @@
-export function getUrlQuery (key) {
-    const search = window.location.search
+export function getUrlQuery (key, search) {
     if (!search) {
         return ''
     }

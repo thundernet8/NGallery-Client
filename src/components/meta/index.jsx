@@ -5,7 +5,7 @@ import config                       from '../../../config'
 export default class Meta extends React.Component {
     render () {
         let meta = {
-            title: 'Account Center' + ' - ' + config.app,
+            title: config.app,
             description: config.description
         }
 

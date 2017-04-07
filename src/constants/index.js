@@ -1,10 +1,10 @@
 import * as api             from './api'
-import * as login           from './login'
-import * as register        from './register'
+import * as user            from './user'
+import * as others          from './others'
 
 export default Object.assign(
     {},
     api,
-    login,
-    register
+    user,
+    others
 )

@@ -1,4 +1,4 @@
-const dockerized = true
+const dockerized = false
 
 const baseConfig = {
     app: 'NGallery',
@@ -12,16 +12,18 @@ const baseConfig = {
 
 const devConfig = {
     debug: true,
-    home: 'http://localhost:3000',
+    home: 'http://localhost:4000',
     port: 4000,
-    api: dockerized ? 'http://api-node:8080/api/v1' : 'http://api.fuli.news/api/v1' // 'http://localhost:5000/api/v1'
+    nodeApi: dockerized ? 'http://api-node:8080/api/v1' : 'http://api.fuli.news/api/v1', // 'http://localhost:5000/api/v1'
+    api: 'http://localhost:5000/api/v1'
 }
 
 const prodConfig = {
     debug: false,
-    home: 'http://account.fuli.news',
+    home: 'http://www.fuli.news',
     port: 8080,
-    api: dockerized ? 'http://api-node:8080/api/v1' : 'http://api.fuli.news/api/v1'
+    nodeApi: dockerized ? 'http://api-node:8080/api/v1' : 'http://api.fuli.news/api/v1',
+    api: 'http://api.fuli.news/api/v1'
 }
 
 module.exports = process.env.NODE_ENV === 'development' ? Object.assign({}, baseConfig, devConfig) : Object.assign({}, baseConfig, prodConfig)

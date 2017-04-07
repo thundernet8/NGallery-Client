@@ -7,8 +7,8 @@ import zh                   from 'react-intl/locale-data/zh'
 
 addLocaleData([...en, ...zh])
 
-const chooseLocale = () => {
-    switch (navigator.language.split('-')[0]) {
+const chooseLocale = (language) => {
+    switch (language.split('-')[0]) {
         case 'zh':
             return zhCN
         default:
@@ -19,7 +19,7 @@ const chooseLocale = () => {
 export default class LocalProvider extends React.Component {
     render () {
         return (
-            <IntlProvider locale={navigator.language} messages={chooseLocale()}>{this.props.children}</IntlProvider>
+            <IntlProvider locale={this.props.language} messages={chooseLocale(this.props.language)}>{this.props.children}</IntlProvider>
         )
     }
 }
