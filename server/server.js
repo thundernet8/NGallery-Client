@@ -7,6 +7,7 @@ import config                   from '../config'
 import devConfig                from '../build/webpack.dev.conf.babel'
 import ssrRouter                from './render'
 import responseTimer            from 'response-time'
+import requestLanguage          from 'express-request-language'
 
 let app = express()
 app.use(compression())
@@ -14,6 +15,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser(config.tokenCookie))
 app.use(responseTimer())
+app.use(requestLanguage({
+    languages: ['en-US', 'zh-CN'],
+    cookie: {
+        name: 'language',
+        options: { maxAge: 24*3600*1000 }
+    }
+}))
 
 if (process.env.NODE_ENV === 'development') {
     let compiler = webpack(devConfig)
@@ -45,11 +53,11 @@ app.use(express.static('dist'))
 app.use((req, res, next) => {
     global.navigator = global.navigator || {}
     global.navigator.userAgent = req.headers['user-agent'] || 'all'
-    global.navigator.language = req.headers['xxx'] || 'zh-CN'
+    global.navigator.language = req.language || 'zh-CN'
     next()
 })
 
-app.get('*', ssrRouter)
+app.use('*', ssrRouter)
 
 app.disable('x-powered-by')
 

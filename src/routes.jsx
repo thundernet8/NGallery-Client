@@ -10,20 +10,24 @@ import appConfig                                                            from
 import App from './containers/app'
 import Home from './containers/home'
 
-const saveToken = (state) => {
-    const authInfo = getUrlQuery(appConfig.authInfoKey, state.location.search)
+const saveToken = (state, replace) => {
+    const { pathname, search } = state.location
+    const authInfo = getUrlQuery(appConfig.authInfoKey, search)
+
     if (authInfo) {
         let infoObj = JSON.parse(Base64.decode(authInfo))
         if (infoObj.token && infoObj.expires && infoObj.expires > (new Date()).getTime()) {
-            reactCookie.save(appConfig.tokenCookie, infoObj.token, {httpOnly: false, domain: location.hostname, path: '/', expires: new Date(infoObj.expires)})
-            location.replace(removeUrlQuery(location.href, appConfig.authInfoKey))
+            if (typeof window !== 'undefined') {
+                reactCookie.save(appConfig.tokenCookie, infoObj.token, {httpOnly: false, path: '/', expires: new Date(infoObj.expires)})
+                location.replace(removeUrlQuery(location.href, appConfig.authInfoKey))
+            }
         }
     }
 }
 
 export default (history, user) => {
     const triggerEnter = (nextState, replaceState) => {
-        saveToken(nextState)
+        saveToken(nextState, replaceState)
     }
 
     const triggerLeave = (nextState, replaceState) => {

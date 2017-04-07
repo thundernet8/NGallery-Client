@@ -1,4 +1,4 @@
-const dockerized = false
+const dockerized = true
 
 const baseConfig = {
     app: 'NGallery',

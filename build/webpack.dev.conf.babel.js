@@ -60,6 +60,7 @@ let devConfig = {
             excludeChunks: ['app']
         }),
         new HtmlWebpackIncludeAssetsPlugin({
+            files: ['../dist/notFound.ejs'],
             assets: ['404.css'],
             append: false,
             publicPath: config.static

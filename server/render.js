@@ -4,7 +4,7 @@ import { RouterContext, match }                                 from 'react-rout
 import axios                                                    from 'axios'
 import DocumentMeta                                             from 'react-document-meta'
 import Promise                                                  from 'bluebird'
-import config                                                   from '../config'
+import appConfig                                                from '../config'
 import configureStore                                           from '../src/store/configureStore'
 import createMemoryHistory                                      from 'history/lib/createMemoryHistory'
 import CONSTANTS                                                from '../src/constants'
@@ -15,14 +15,14 @@ import LocalProvider                                            from '../src/i18
 import ThemeProvider                                            from '../src/components/muiTheme'
 import Actions                                                  from '../src/actions'
 import React                                                    from 'react'
+import reactCookie                                              from 'react-cookie'
+import { getUrlQuery, removeUrlQuery }                          from '../src/utils/url'
+import { Base64 }                                               from 'js-base64'
 
 const ssrRouter = express.Router()
 
 const getReduxPromise = async(renderProps, store, history) => {
-    let {
-        query,
-        params
-    } = renderProps
+    let { query, params } = renderProps
     let comp = renderProps.components[renderProps.components.length - 1].WrappedComponent
     if (comp.fetchData) { // 组件拥有static方法fetchData用于服务器端渲染时决定如何预加载数据
         return await comp.fetchData({query, params, store, history})
@@ -37,7 +37,7 @@ const authorize = async(token) => {
     }
 
     const axiosInstance = axios.create({
-        baseURL: config.nodeApi,
+        baseURL: appConfig.nodeApi,
         timeout: 1000,
         headers: {
             'Authorization': `Bearer ${token}`
@@ -47,17 +47,26 @@ const authorize = async(token) => {
     try {
         const response = await axiosInstance.get('/me')
         const data = response.data
-        if (user && user._id) {
-            return user
+        if (data && data._id) {
+            return data
         } else {
             return new Error('invalid user profile')
         }
     } catch (error) {
-        return new Error(err)
+        return new Error(error)
     }
 }
 
 ssrRouter.route('*').get(async(req, res) => {
+    // 设置 token Cookie 并重定向
+    const authInfo = getUrlQuery(appConfig.authInfoKey, req.originalUrl)
+    if (authInfo) {
+        let infoObj = JSON.parse(Base64.decode(authInfo))
+        res.cookie(appConfig.tokenCookie, infoObj.token, {httpOnly: false, path: '/', expires: new Date(infoObj.expires)})
+        res.redirect(302, removeUrlQuery(req.originalUrl, appConfig.authInfoKey))
+        return
+    }
+
     const history = createMemoryHistory()
     const store = configureStore({
         user: {
@@ -67,11 +76,11 @@ ssrRouter.route('*').get(async(req, res) => {
         history: []
     })
 
-    let token = req.cookies && req.cookies[config.tokenCookie] || ''
+    let token = req.cookies && req.cookies[appConfig.tokenCookie] || ''
     let profile = null
     let authResult = await authorize(token)
     if (authResult instanceof Error) {
-        res.clearCookie(config.tokenCookie)
+        res.clearCookie(appConfig.tokenCookie)
         token = ''
     } else {
         profile = authResult
@@ -91,13 +100,13 @@ ssrRouter.route('*').get(async(req, res) => {
             res.send(500, error.message)
         } else if (!nextState) {
             res.status(404)
-            res.render('../dist/notFound.ejs')
+            res.render(path.resolve(__dirname, '../dist/notFound.ejs'))
         } else {
             const result = await getReduxPromise(nextState, store, history)
             if (result instanceof Error) { // 例如预加载某篇文章但是数据不存在，应该返回404
                 res.status(404)
-                res.render('../dist/notFound.ejs')
-            } else {
+                res.render(path.resolve(__dirname, '../dist/notFound.ejs'))
+            } else {                
                 const reduxState = JSON.stringify(store.getState())
                 const html = renderToString(
                     <ThemeProvider userAgent={global.navigator.userAgent}>
@@ -106,25 +115,11 @@ ssrRouter.route('*').get(async(req, res) => {
                         </LocalProvider>
                     </ThemeProvider>
                 )
-                const jhtml = JSON.stringify(html)
                 const meta = DocumentMeta.renderAsHTML()
-                res.render('../dist/index.ejs', {meta, html: jhtml, reduxState})
+                res.render(path.resolve(__dirname, '../dist/index.ejs'), {meta, html, reduxState})
             }
         }
     })
-
-
-    const meta = DocumentMeta.renderAsHTML()
-    const reduxState = JSON.stringify({
-        user: {
-            profile,
-            accessToken: token
-        }
-    })
-    res.render(path.resolve(__dirname, '../dist/index.ejs'), {
-        meta,
-        reduxState
-    });
 })
 
 export default ssrRouter
