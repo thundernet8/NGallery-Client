@@ -5,7 +5,7 @@ export default class App extends React.Component {
     render () {
         return (
             <div>
-                <Header/>
+                <Header location={this.props.location} router={this.props.router}/>
                 {this.props.children}
             </div>
         )

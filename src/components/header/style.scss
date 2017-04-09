@@ -1,0 +1,384 @@
+.headerWrap {
+    
+}
+
+.header {
+    margin: 0 auto;
+    border-radius: 0;
+    height: 64px;
+    border: none;
+}
+
+.primaryNav {
+    background: #2856b6;
+}
+
+.primaryNavInner {
+    border-bottom: #f3f3f3;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    max-width: 1060px;
+}
+
+.headLogoWrap {
+    display: inline-block;
+    z-index: 1;
+    float: left;
+    left: 0;
+    margin: 5px 20px 0 0;
+    height: 54px;
+}
+
+.logo {
+    max-height: 100%;
+}
+
+.headSearchContainer {
+    float: left;
+}
+
+.headSearchWrap {
+    display: block;
+    margin: 0 auto;
+    height: 64px;
+    width: 680px;
+    position: relative;
+    max-width: 700px;
+    top: 0;
+    padding: 10px 0;
+    -webkit-transition: padding .2s ease;
+    transition: padding .2s ease;
+}
+
+.headSearch {
+    position: relative;
+    .searchIcon {
+        // color: #c5cccd;
+        color: rgba(255, 255, 255, 0.25);
+        font-size: 2.4rem;
+        left: 10px;
+        line-height: 44px;
+        position: absolute;
+        top: 0;
+        -webkit-transition: color .2s ease;
+        transition: color .2s ease;
+    }
+    &.focus {
+        .searchIcon {
+            color: #212121!important;
+        }
+        .searchInput {
+            background-color: #fff!important;
+            box-shadow: 0 1px 5px 0 rgba(0,0,0,.1);
+            color: #212121!important;
+            &::placeholder {
+                text-align: left!important;
+                color: #212121!important
+            }
+        }
+    }
+}
+
+.searchInput {
+    // background: transparent;
+    background-color: #4e74c6;
+    border: 0;
+    cursor: text;
+    outline: none;
+    padding: 0 10px 0 40px;
+    width: calc(100% - 5px);
+    color: #ebebeb;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 44px;
+    border-radius: 3px;
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.25);
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 35px;
+    }
+}
+
+.headMenuItems {
+    margin: 0;
+    height: 64px;
+    padding: 12px 0;
+    float: right;
+    >li {
+        float: left;
+        display: block;
+        list-style: none;
+        position: relative;
+        padding: 0;
+        margin: 0 0 0 15px;
+        line-height: 40px;
+        >span {
+            line-height: 40px;
+            vertical-align: middle;
+            cursor: pointer;
+            top: -2px;
+        }
+    }
+}
+
+.loginTextWrap {
+    a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+    }
+}
+
+.submitBtn {
+
+}
+
+.userProfile {
+    img {
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        border-radius: 50%;
+    }
+}
+
+.moreMeun {
+
+}
+
+.secondaryNav {
+    margin: 0 auto;
+    height: 50px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    position: relative;
+    opacity: 1;
+    text-align: center;
+}
+
+.secondaryNavInner {
+    max-width: 1060px;
+    position: relative;
+    -webkit-transition: padding .2s ease;
+    transition: padding .2s ease;
+    margin: 0 auto;
+}
+
+.secondaryMenuItems {
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    .secondaryMenuItem {
+        position: relative;
+        margin: 0;
+        height: 50px;
+        float: left;
+        padding: 0;
+        list-style: none;
+        display: inline-block;
+        >a {
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            display: block;
+            color: #3b4a51;
+            line-height: 50px;
+            text-transform: none;
+            font-weight: 400;
+            padding: 0;
+            height: 50px;
+            font-size: 16px;
+            padding: 1px 15px 0;
+            &.active {
+                border-bottom: 2px solid #2856b6;
+                color: #2856b6;
+            }
+        }
+        &:hover {
+            >a {
+                color: #2856b6; // #6cd1da;
+            }
+        }
+        &.dropdown {
+            >a {
+                padding-right: 20px;
+                &::before {
+                    content: "\F107";
+                    font-family: FontAwesome;
+                    right: 5px;
+                    position: absolute;
+                    top: 2px;
+                    opacity: .75;
+                    font-size: 12px;
+                }
+                &:hover {
+                    &::before {
+                        content: "\F106";
+                    }
+                }
+            }
+        }
+    }
+
+    &.secondaryLeft {
+        float: left;
+        li>a {
+            padding-left: 32px;
+            &.active,
+            &:hover {
+                >span {
+                    color: #2856b6 !important;
+                }
+            }
+        }
+        li>a>span {
+            font-size: 18px !important;
+            position: absolute !important;
+            top: 1px;
+            left: 12px;
+            line-height: 50px;
+            color: #3b4a51 !important;
+        }
+    }
+
+    &.secondaryRight {
+        float: right;
+    }
+}
+
+.dropdown {
+    &:hover {
+        .dropdownWrap {
+            display: block;
+        }
+    }
+}
+
+.dropdownWrap {
+    color: rgba(0, 0, 0, 0.870588);
+    background-color: #fff;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    z-index: 2100;
+    opacity: 1;
+    transform: scale(1, 1);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    display: none;
+    left: 0;
+    margin: 0;
+    min-width: 160px;
+    padding: 0;
+}
+
+.catColsWrap {
+    margin-left: -175px;
+
+    >div {
+        flex-wrap: nowrap;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    h3 {
+        white-space: nowrap;
+        font-size: 20px;
+        margin: 5px 0 0;
+        width: 90px;
+        >span {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            padding: 10px 0 10px 0;
+            text-transform: uppercase;
+        }
+        &:hover {
+            background-color: #f8f8fa;
+        }
+    }
+
+    ul {
+        padding-left: 0;
+        li {
+            a {
+                display: block;
+                white-space: nowrap;
+                background-color: #fff;
+                color: #606060;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                padding: 2px 0 2px 0;
+                text-decoration: none;
+                text-transform: capitalize;
+                &:hover {
+                    background-color: #f8f8fa;
+                }
+            }
+        }
+    }
+
+    .allTagsLink {
+        padding: 15px 0 10px;
+        a {
+            color: #2856b6;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        span {
+            color: #2856b6 !important;
+            font-size: 14px !important;
+            vertical-align: middle;
+        }
+    }
+}
+
+.collectionMenuItemsWrap {
+    margin-left: -50px;
+    ul {
+        padding: 15px 0;
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            a {
+                background-color: #fff;
+                color: #606060;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                padding: 2px 0 2px 30px;
+                text-decoration: none;
+                text-transform: capitalize;
+                &:hover {
+                    background-color: #f8f8fa;
+                }
+            }
+        }
+    }
+
+    h3 {
+        border-top: 1px solid rgba(76,87,102,.1);
+        margin: 0;
+        position: relative;
+        text-align: left;
+        >a {
+            display: block;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 20px;
+            padding: 10px 0 10px 30px;
+            text-transform: uppercase;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        &:hover {
+            background-color: #f8f8fa;
+        }
+    }
+}

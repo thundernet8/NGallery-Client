@@ -108,7 +108,7 @@ ssrRouter.route('*').get(async(req, res) => {
                 res.render(path.resolve(__dirname, '../dist/notFound.ejs'))
             } else {                
                 const reduxState = JSON.stringify(store.getState())
-                const html = renderToString(
+                const html = process.env.NODE_ENV === 'development' ? '' : renderToString(
                     <ThemeProvider userAgent={global.navigator.userAgent}>
                         <LocalProvider language={global.navigator.language}>
                             <Provider store={store}>{<RouterContext {...nextState} />}</Provider>

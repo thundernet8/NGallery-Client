@@ -11,13 +11,15 @@ export default function (state = initialState, action) {
             return action.payload
         case CONSTANTS.SET_ACCESS_TOKEN:
             state.accessToken = action.token
-            return state
+            return Object.assign({}, state)
         case CONSTANTS.DELETE_ACCESS_TOKEN:
             state.accessToken = ''
-            return state
+            return Object.assign({}, state)
         case CONSTANTS.SET_USER:
             state.profile = action.profile
-            return state
+            return Object.assign({}, state)
+        case CONSTANTS.SIGN_OUT:
+            return initialState
         default:
             return state
     }

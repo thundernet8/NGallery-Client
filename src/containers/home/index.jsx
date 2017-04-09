@@ -1,5 +1,6 @@
 import { connect }                  from 'react-redux'
 import React, { PropTypes }         from 'react'
+import Meta                         from '../../components/meta'
 
 class Home extends React.Component {
     componentDidMount () {
@@ -15,8 +16,13 @@ class Home extends React.Component {
     }
 
     render () {
+        const meta = {
+            title: 'Home',
+            description: 'Galleries excite your eyes'
+        }
         return (
-        <div>
+        <div style={{height: 2000}}>
+            <Meta meta={meta} />
             {this.props.children}
         </div>
         )
