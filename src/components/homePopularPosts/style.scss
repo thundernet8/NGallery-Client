@@ -1,0 +1,22 @@
+.masonryWrap {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+// .masonryBox {
+//     width: 33.33333333%;
+// }
+
+.boxInner {
+    .imgLink {
+        display: block;
+        width: 100%;
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+

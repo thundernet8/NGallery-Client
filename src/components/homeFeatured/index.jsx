@@ -15,9 +15,9 @@ class HomeFeatured extends React.Component {
     }
 
     render () {
-        const items = this.props.featuredPosts.map(post => {
+        const items = this.props.featuredPosts.map((post, index) => {
             return (
-                <div key={post._id} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
+                <div key={index} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
                     <div className={styles.card} style={{backgroundColor: randColor()}}>
                         <span className={styles.saveBtn}>+ SAVE</span>
                         <Link className={styles.imgLink} to={`/p/${post._id}`}><img srcSet="" src={post.featuredImage.url} alt="" title={post.title} /></Link>

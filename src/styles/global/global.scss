@@ -17,7 +17,7 @@
 
 html, body {
     font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, STXihei, "Microsoft YaHei", 微软雅黑, sans-serif;
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -106,7 +106,7 @@ a:focus,a:hover {
 /* Elements */
 
 #app {
-    height: 100%;
+    min-height: 100%;
 }
 
 /* Transition */
@@ -205,6 +205,25 @@ a:focus,a:hover {
 .spin {
   -webkit-animation-name: spin;
   animation-name: spin;
+}
+
+@keyframes scaleFadeIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.scaleFadeIn {
+    -webkit-animation-name: scaleFadeIn;
+    animation-name: scaleFadeIn;
 }
 
 /* Head Room */

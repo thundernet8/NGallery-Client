@@ -14,9 +14,9 @@ class HomeFeaturedCollection extends React.Component {
     }
 
     render () {
-        const items = this.props.featuredCollections.map(collection => {
+        const items = this.props.featuredCollections.map((collection, index) => {
             return (
-                <div key={collection._id} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
+                <div key={index} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
                     <div className={styles.card} style={{backgroundColor: randColor()}}>
                         <a className={styles.imgLink} href={`/collection/${collection._id}`}><img srcSet="" src={collection.featuredImage.url} alt="" title="" /></a>
                         <div className={styles.info}>

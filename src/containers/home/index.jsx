@@ -5,6 +5,7 @@ import VistorBanner                 from '../../components/vistorBanner'
 import HomeFeatured                 from '../../components/homeFeatured'
 import HomeFeaturedCollection       from '../../components/homeFeaturedCollection'
 import HomeHotTags                  from '../../components/homeHotTags'
+import HomePopularPosts             from '../../components/homePopularPosts'
 import styles                       from './style.scss'
 
 class Home extends React.Component {
@@ -26,7 +27,7 @@ class Home extends React.Component {
             description: 'Galleries excite your eyes'
         }
         return (
-            <div style={{height: 2000}}>
+            <div>
                 <Meta meta={meta} />
                 {(!this.props.user || !this.props.user.accessToken) &&
                 <VistorBanner location={this.props.location} />}
@@ -34,6 +35,7 @@ class Home extends React.Component {
                     <HomeFeatured />
                     <HomeFeaturedCollection />
                     <HomeHotTags />
+                    <HomePopularPosts />
                 </div>
             </div>
         )

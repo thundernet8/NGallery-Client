@@ -10,9 +10,9 @@ class HomeHotTags extends React.Component {
     }
 
     render () {
-        const items = this.props.topTags.map(tag => {
+        const items = this.props.topTags.map((tag, index) => {
             return (
-                <li key={tag._id} className={styles.tag}>
+                <li key={index} className={styles.tag}>
                     <a href={`/posts/t/${tag._id}`}>{`${tag.name} (${tag.posts})`}</a>
                 </li>
             )
