@@ -47,7 +47,7 @@ a {
 
 a:focus,a:hover {
     color: #23527c;
-    text-decoration: underline
+    text-decoration: none;
 }
 
 /* Utilities */
@@ -223,6 +223,7 @@ a:focus,a:hover {
 }
 
 .headroom-wrapper {
+    height: 115px !important;
     .headroom {
         background-color: #fff;
         border-bottom: 1px solid #c5cfdc;
@@ -232,5 +233,50 @@ a:focus,a:hover {
         transition: background .15s ease;
         width: 100%;
         z-index: 200;
+    }
+}
+
+/* Buttons */
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 0 19px;
+    font-size: 14px;
+    line-height: 32px;
+    margin: 0;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.btn-primary {
+    @extend .btn;
+    border: 1px solid #6cd1da;
+    background: #6cd1da;
+    &.btn-shadow {
+        color: #6cd1da;
+        box-shadow: inset 0 0 0 1px #6cd1da;
+        background: transparent;
+        border: none;
+        &:hover {
+            background: #6cd1da;
+            color: #fff;
+        }
+    }
+}
+
+.btn-secondary {
+    @extend .btn;
+    border: 1px solid #2856b6;
+    background: #2856b6;
+    &.btn-shadow {
+        color: #2856b6;
+        box-shadow: inset 0 0 0 1px #2856b6;
+        background: transparent;
+        border: none;
+        &:hover {
+            background: #2856b6;
+            color: #fff;
+        }
     }
 }

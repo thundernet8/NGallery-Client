@@ -1,0 +1,42 @@
+.indexBanner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 215px;
+}
+
+.inner {
+    background: linear-gradient(159deg,#4e74c6 -75%,rgba(53, 165, 176, 0.25) 80%);
+    height: 100%;
+}
+
+.content {
+    margin: 0 auto;
+    padding: 30px 0;
+    max-width: 1060px;
+    color: #fff;
+    text-align: center;
+    >h1 {
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+    >p {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.5;
+        margin: 0 auto 20px;
+    }
+    >a {
+        box-shadow: 0 7px 15px rgba(0,0,0,.2);
+        color: #337ab7;
+        background: #fff;
+        border-radius: 2px;
+        display: inline-block;
+        font-size: 16px;
+        padding: 14px 42px 12px;
+        &:hover {
+            background: #ebeff1;
+            text-decoration: none;
+        }
+    }
+}

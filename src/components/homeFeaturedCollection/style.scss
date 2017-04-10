@@ -1,0 +1,104 @@
+.HomeFeaturedCollection {
+    margin-bottom: 20px;
+}
+
+.sectionHeader {
+    position: relative;
+    margin-bottom: 20px;
+    h3 {
+        font-size: 16px;
+        margin-top: 0;
+        font-weight: 500;
+        color: #3b4a51;
+        display: inline;
+        text-transform: uppercase;
+    }
+    .moreBtn {
+        position: absolute;
+        right: 0;
+        top: -6px;
+        border-radius: 4px;
+        margin: 0;
+        text-align: center;
+        padding: 0 19px;
+        font-size: 12px;
+        line-height: 32px;
+        cursor: pointer;
+    }
+}
+
+.item {
+    position: relative;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    .imgLink {
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+.card:hover {
+
+}
+
+.info {
+    height: 64px;
+    overflow: hidden;
+    background: #fff;
+    padding: 10px;
+    position: relative;
+}
+
+.authorLink {
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 17px;
+    img {
+        display: block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+}
+
+.metabox {
+    padding-left: 40px;
+    padding-right: 75px;
+    h2 {
+        margin: 0;
+        font-size: 16px;
+        line-height: 24px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: #343639;
+        font-weight: 500;
+    }
+    .counts {
+        line-height: 20px;
+        font-size: 13px;
+        color: rgba(76,87,102,.5);
+        .point {
+            width: 2px;
+            height: 2px;
+            background: #aaa;
+            display: inline-block;
+            margin: 0 5px;
+            position: relative;
+            top: -3px;
+        }
+    }
+}
+
+.followBtn {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+}

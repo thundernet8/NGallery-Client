@@ -1,0 +1,39 @@
+.homeHotTags {
+    margin: 15px 0 45px;
+}
+
+.inner {
+    padding: 15px;
+    margin: 0;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.sectionTitle {
+    font-size: 16px;
+}
+
+.tagItems {
+    margin: 0;
+    padding: 0;
+    .tag {
+        display: inline-block;
+        list-style: none;
+        margin: 10px 10px 0 0;
+
+        a {
+            background: #eceff5;
+            border-radius: 2px;
+            color: #3b4a51;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            padding: 4px 8px;
+            text-transform: capitalize;
+            &:hover {
+                background: #2856b6;
+                color: #fff;
+            }
+        }
+    }
+}

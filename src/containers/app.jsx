@@ -4,9 +4,9 @@ import Header                   from '../components/header'
 export default class App extends React.Component {
     render () {
         return (
-            <div>
+            <div style={{backgroundColor: '#ebeff1'}}>
                 <Header location={this.props.location} router={this.props.router}/>
-                {this.props.children}
+                <div id="wrapper">{this.props.children}</div>
             </div>
         )
     }
