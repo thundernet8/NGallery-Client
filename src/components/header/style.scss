@@ -290,6 +290,7 @@
         font-size: 20px;
         margin: 5px 0 0;
         width: 90px;
+        cursor: default;
         >span {
             display: block;
             font-size: 16px;
@@ -317,6 +318,7 @@
                 padding: 2px 0 2px 0;
                 text-decoration: none;
                 text-transform: capitalize;
+                cursor: pointer;
                 &:hover {
                     background-color: #f8f8fa;
                 }

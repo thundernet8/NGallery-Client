@@ -14,7 +14,7 @@ const sizes = [{ columns: 1, gutter: 20 },
   { mq: '1024px', columns: 3, gutter: 20 }
 ]
 
-class HomePopularPosts extends React.Component {
+class LatestPosts extends React.Component {
     state = {
         page: 1,
         images: 0
@@ -32,20 +32,20 @@ class HomePopularPosts extends React.Component {
     }
 
     handleLoadMore = () => {
-        if (this.state.images !== this.props.homePopularPosts.length) {
+        if (this.state.images !== this.props.latestPosts.length) {
             return
         }
         console.log(this.state.page)
-        this.props.getPopularPosts(this.state.page)
+        this.props.getLatestPosts(this.state.page)
     }
 
     componentWillMount () {
-        // this.props.getPopularPosts()
+        // this.props.getLatestPosts()
     }
 
     componentWillReceiveProps (nextProps) {
         console.log('componentWillReceiveProps')
-        if (nextProps.homePopularPosts.length > this.props.homePopularPosts.length) {
+        if (nextProps.latestPosts.length > this.props.latestPosts.length) {
             this.setState({
                 page: ++this.state.page
             })
@@ -53,7 +53,7 @@ class HomePopularPosts extends React.Component {
     }
 
     render () {
-        const items = this.props.homePopularPosts.map((post, index) => {
+        const items = this.props.latestPosts.map((post, index) => {
             return (
                 <div key={index} className={ClassNames(styles.masonryBox, 'animated scaleFadeIn')} style={{width: 'calc((100% - 40px) / 3)', background: randColor()}}>
                     <div className={styles.boxInner} style={{background: randColor()}}>
@@ -76,7 +76,7 @@ class HomePopularPosts extends React.Component {
         const loader = <LineLoader />
 
         return (
-            <div className={styles.homePosts}>
+            <div className={ClassNames(styles.postsGrid, styles.latestPosts)}>
                 <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={true} loadMore={this.handleLoadMore} loader={loader}>
                     {items}
                 </Masonry>
@@ -87,16 +87,16 @@ class HomePopularPosts extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        homePopularPosts: state.homePopularPosts
+        latestPosts: state.latestPosts
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPopularPosts: (page) => {
-            return dispatch(Actions.getHomePopularPosts(page))
+        getLatestPosts: (page) => {
+            return dispatch(Actions.getLatestPosts(page))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePopularPosts)
+export default connect(mapStateToProps, mapDispatchToProps)(LatestPosts)

@@ -19,7 +19,8 @@ class HomeFeatured extends React.Component {
             return (
                 <div key={index} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
                     <div className={styles.card} style={{backgroundColor: randColor()}}>
-                        <span className={styles.saveBtn}>+ SAVE</span>
+                        <h2>{post.title}</h2>
+                        <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
                         <Link className={styles.imgLink} to={`/p/${post._id}`}><img srcSet="" src={post.featuredImage.url} alt="" title={post.title} /></Link>
                         <div className={styles.metabox}>
                             <Link className={styles.authorLink} to={`/u/${post.author._id}`}><img className={styles.authorAvatar} src={post.author.avatar} /><span>{post.author.name}</span></Link>

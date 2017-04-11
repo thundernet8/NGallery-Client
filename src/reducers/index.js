@@ -4,7 +4,9 @@ import user                                               from './user'
 import history                                            from './history'
 import {
     featuredPostsReducer,
-    homePopularPostsReducer
+    homePopularPostsReducer,
+    latestPostsReducer,
+    randomPostsReducer
 }                                                         from './post'
 import { featuredCollectionsReducer }                     from './collection'
 import { topTagsReducer }                                 from './tag'
@@ -16,5 +18,7 @@ export default combineReducers({
     featuredPosts: featuredPostsReducer,
     featuredCollections: featuredCollectionsReducer,
     topTags: topTagsReducer,
-    homePopularPosts: homePopularPostsReducer
+    homePopularPosts: homePopularPostsReducer,
+    latestPosts: latestPostsReducer,
+    randomPosts: randomPostsReducer
 })

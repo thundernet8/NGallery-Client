@@ -8,7 +8,9 @@ import appConfig                                                            from
 
 // Containers
 import App from './containers/app'
-import Home from './containers/home'
+import HomePage from './containers/home'
+import LatestPage from './containers/latest'
+import ExplorePage from './containers/explore'
 
 const saveToken = (state, replace) => {
     const { pathname, search } = state.location
@@ -48,8 +50,10 @@ export default (history, user) => {
 
     return (
         <Router history={history} /* render={applyRouterMiddleware(useScroll())} */>
-            <Route path="/" component={App}>
-                <IndexRoute component={Home} onEnter={triggerEnter} onLeave={triggerLeave}/>
+            <Route component={App}>
+                <Route path="/" component={HomePage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/latest" component={LatestPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/explore" component={ExplorePage} onEnter={triggerEnter} onLeave={triggerLeave}/>
             </Route>
         </Router>
     )

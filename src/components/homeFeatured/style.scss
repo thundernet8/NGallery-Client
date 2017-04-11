@@ -21,6 +21,20 @@
 .card {
     position: relative;
     overflow: hidden;
+    >h2 {
+        color: #fff;
+        position: absolute;
+        top: -15px;
+        left: 0;
+        opacity: 0;
+        transition: .25s;
+        margin: 0;
+        padding: 0 55px 0 15px;
+        line-height: 1.5;
+        font-size: 16px;
+        font-weight: 500;
+        word-break: break-all;
+    }
     .saveBtn {
         position: absolute;
         top: -15px;
@@ -30,6 +44,10 @@
         font-size: 14px;
         color: #fff;
         cursor: pointer;
+        span {
+            color: #fff !important;
+            vertical-align: middle;
+        }
     }
     .imgLink {
         img {
@@ -53,6 +71,7 @@
 }
 
 .card:hover {
+    >h2,
     .saveBtn {
         top: 15px;
         opacity: 1;

@@ -2,13 +2,10 @@ import { connect }                  from 'react-redux'
 import React, { PropTypes }         from 'react'
 import Meta                         from '../../components/meta'
 import VistorBanner                 from '../../components/vistorBanner'
-import HomeFeatured                 from '../../components/homeFeatured'
-import HomeFeaturedCollection       from '../../components/homeFeaturedCollection'
-import HomeHotTags                  from '../../components/homeHotTags'
-import HomePopularPosts             from '../../components/homePopularPosts'
+import LatestPosts                  from '../../components/latestPosts'
 import styles                       from './style.scss'
 
-class HomePage extends React.Component {
+class LatestPage extends React.Component {
     componentDidMount () {
 
     }
@@ -23,8 +20,8 @@ class HomePage extends React.Component {
 
     render () {
         const meta = {
-            title: 'Home',
-            description: 'Galleries excite your eyes'
+            title: 'Latest Gallery',
+            description: 'Latest galleries excite your eyes'
         }
         return (
             <div>
@@ -32,10 +29,7 @@ class HomePage extends React.Component {
                 {(!this.props.user || !this.props.user.accessToken) &&
                 <VistorBanner location={this.props.location} />}
                 <div className={styles.content}>
-                    <HomeFeatured />
-                    <HomeFeaturedCollection />
-                    <HomeHotTags />
-                    <HomePopularPosts />
+                    <LatestPosts />
                 </div>
             </div>
         )
@@ -52,4 +46,4 @@ const mapDispatchToProps = (dispatch) => {
     return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
+export default connect(mapStateToProps, mapDispatchToProps)(LatestPage)

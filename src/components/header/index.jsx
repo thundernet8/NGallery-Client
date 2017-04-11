@@ -53,9 +53,9 @@ class Header extends React.Component {
                     <div className={ClassNames(styles.secondaryNavInner, 'clearfix')}>
                         <ul className={ClassNames(styles.secondaryMenuItems, styles.secondaryLeft)}>
                             <li className={styles.secondaryMenuItem}><Link to="/" activeClassName={styles.active}><Icon type="home" />首页</Link></li>
-                            <li className={styles.secondaryMenuItem}><Link to="/latest" activeClassName="active"><Icon type="query_builder" />最新</Link></li>
-                            <li className={styles.secondaryMenuItem}><Link to="/explore" activeClassName="active"><Icon type="visibility" />发现</Link></li>
-                            <li className={styles.secondaryMenuItem}><Link to="/share" activeClassName="active"><Icon type="all_inclusive" />分享</Link></li>
+                            <li className={styles.secondaryMenuItem}><Link to="/latest" activeClassName={styles.active}><Icon type="query_builder" />最新</Link></li>
+                            <li className={styles.secondaryMenuItem}><Link to="/explore" activeClassName={styles.active}><Icon type="visibility" />发现</Link></li>
+                            <li className={styles.secondaryMenuItem}><Link to="/share" activeClassName={styles.active}><Icon type="all_inclusive" />分享</Link></li>
                         </ul>
                         <ul className={ClassNames(styles.secondaryMenuItems, styles.secondaryRight)}>
                             <CategoryMenu />
