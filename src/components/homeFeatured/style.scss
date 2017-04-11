@@ -24,7 +24,7 @@
     .saveBtn {
         position: absolute;
         top: -15px;
-        right: 10px;
+        right: 15px;
         opacity: 0;
         transition: .25s;
         font-size: 14px;
@@ -54,7 +54,7 @@
 
 .card:hover {
     .saveBtn {
-        top: 10px;
+        top: 15px;
         opacity: 1;
     }
     .metabox {

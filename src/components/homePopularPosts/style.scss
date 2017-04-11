@@ -9,6 +9,18 @@
 // }
 
 .boxInner {
+    position: relative;
+    overflow: hidden;
+    .saveBtn {
+        position: absolute;
+        top: -15px;
+        right: 15px;
+        opacity: 0;
+        transition: .25s;
+        font-size: 14px;
+        color: #fff;
+        cursor: pointer;
+    }
     .imgLink {
         display: block;
         width: 100%;
@@ -16,7 +28,73 @@
             display: block;
             width: 100%;
             height: auto;
+            opacity: 0.1;
+        }
+    }
+    .metabox {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -15px;
+        padding: 10px;
+        opacity: 0;
+        transition: .25s;
+        background: linear-gradient(to top,rgba(0,0,0,.6) 0,rgba(0,0,0,0) 100%);
+        font-size: 14px;
+        color: #fff;
+        height: 50px;
+    }
+}
+
+.boxInner:hover {
+    .saveBtn {
+        top: 15px;
+        opacity: 1;
+    }
+    .metabox {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+.authorLink {
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+    span {
+        display: inline-block;
+        color: #fff;
+        padding: 5px 7px;
+        border-radius: 2px;
+        transition: .2s;
+        position: relative;
+        top: -10px;
+        margin-left: 5px;
+    }
+    &:hover {
+        span {
+            background: rgba(255,255,255,.2);
         }
     }
 }
 
+.counts {
+    float: right;
+    em {
+        font-style: normal;
+        font-size: 14px;
+    }
+    span {
+        color: #fff !important;
+        font-size: 20px !important;
+        margin-left: 5px;
+        margin-right: 5px;
+        vertical-align: middle;
+        line-height: 30px;
+    }
+}

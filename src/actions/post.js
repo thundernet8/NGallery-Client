@@ -42,6 +42,7 @@ export const getFeaturedPosts = () => {
             type: CONSTANTS.FETCH_FEATURED_POSTS_SUCCESS,
             payload: posts
         })
+
         // MockEnd
     }
 }

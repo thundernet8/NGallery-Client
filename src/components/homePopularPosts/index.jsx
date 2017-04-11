@@ -7,6 +7,7 @@ import Actions                          from '../../actions'
 import Masonry                          from 'react-masonry-infinite'
 import randColor                        from '../../utils/randColor'
 import Icon                             from '../icon'
+import LineLoader                       from '../lineLoader'
 
 const sizes = [{ columns: 1, gutter: 20 },
   { mq: '768px', columns: 2, gutter: 20 },
@@ -54,29 +55,28 @@ class HomePopularPosts extends React.Component {
     render () {
         const items = this.props.homePopularPosts.map((post, index) => {
             return (
-                <div key={index} className={ClassNames(styles.masonryBox, 'animated scaleFadeIn')} style={{width: '33.333%', background: randColor()}}>
+                <div key={index} className={ClassNames(styles.masonryBox, 'animated scaleFadeIn')} style={{width: 'calc((100% - 40px) / 3)', background: randColor()}}>
                     <div className={styles.boxInner} style={{background: randColor()}}>
-                        {/* <span className={styles.saveBtn}>+ SAVE</span> */}
+                        <span className={styles.saveBtn}>+ SAVE</span>
                         <Link className={styles.imgLink} to={`/p/${post._id}`}><img onLoad={this.handleImageLoad} srcSet="" src={post.featuredImage.url} alt="" title={post.title} /></Link>
-                        {/* <div className={styles.metabox}>
+                        <div className={styles.metabox}>
                             <Link className={styles.authorLink} to={`/u/${post.author._id}`}><img className={styles.authorAvatar} src={post.author.avatar} /><span>{post.author.name}</span></Link>
                             <div className={styles.counts}>
                                 <em><Icon type="favorite_border" />{post.likes}</em>
                                 <em><Icon type="visibility" />{post.views}</em>
-                                <em><Icon type="turned_in_not" />8</em> favorites count
                                 <em><Icon type="chat_bubble_outline" />{post.comments}</em>
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             )
         })
 
-        const loader = <div>Loading...</div>
+        const loader = <LineLoader />
 
         return (
             <div className={styles.homePosts}>
-                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} sizes={sizes} style={{margin: '0 auto'}} pack={true} hasMore={true} loadMore={this.handleLoadMore} loader={loader}>
+                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={true} loadMore={this.handleLoadMore} loader={loader}>
                     {items}
                 </Masonry>
             </div>
