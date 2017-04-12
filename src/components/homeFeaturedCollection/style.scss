@@ -58,12 +58,18 @@
     display: block;
     position: absolute;
     left: 10px;
-    top: 17px;
+    top: 14px;
     img {
         display: block;
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
+        border: 2px solid #fff;
+    }
+    &:hover {
+        img {
+            border-color: #00ae50;
+        }
     }
 }
 

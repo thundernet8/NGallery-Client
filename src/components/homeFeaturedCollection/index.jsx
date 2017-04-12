@@ -18,11 +18,11 @@ class HomeFeaturedCollection extends React.Component {
             return (
                 <div key={index} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
                     <div className={styles.card} style={{backgroundColor: randColor()}}>
-                        <a className={styles.imgLink} href={`/collection/${collection._id}`}><img srcSet="" src={collection.featuredImage.url} alt="" title="" /></a>
+                        <Link className={styles.imgLink} to={`/collection/${collection._id}`}><img srcSet="" src={collection.featuredImage.url} alt="" title="" /></Link>
                         <div className={styles.info}>
-                            <a className={styles.authorLink} href={`/u/${collection.author._id}`}>
+                            <Link className={styles.authorLink} to={`/u/${collection.author._id}`}>
                                 <img className={styles.authorAvatar} src={collection.author.avatar} title={collection.author.name} />
-                            </a>
+                            </Link>
                             <div className={styles.metabox}>
                                 <h2 className={styles.name}>{collection.name}</h2>
                                 <div className={styles.counts}>

@@ -16,7 +16,7 @@ const sizes = [{ columns: 1, gutter: 20 },
 
 class HomePopularPosts extends React.Component {
     state = {
-        page: 1,
+        page: 0,
         images: 0
     }
 
@@ -36,7 +36,7 @@ class HomePopularPosts extends React.Component {
             return
         }
         console.log(this.state.page)
-        this.props.getPopularPosts(this.state.page)
+        this.props.getPopularPosts(this.state.page + 1)
     }
 
     componentWillMount () {

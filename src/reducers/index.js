@@ -6,10 +6,14 @@ import {
     featuredPostsReducer,
     homePopularPostsReducer,
     latestPostsReducer,
-    randomPostsReducer
+    randomPostsReducer,
+    tagPostsReducer
 }                                                         from './post'
 import { featuredCollectionsReducer }                     from './collection'
-import { topTagsReducer }                                 from './tag'
+import {
+    topTagsReducer,
+    allTagsReducer
+}                                                         from './tag'
 
 export default combineReducers({
     routing: routerReducer,
@@ -18,7 +22,9 @@ export default combineReducers({
     featuredPosts: featuredPostsReducer,
     featuredCollections: featuredCollectionsReducer,
     topTags: topTagsReducer,
+    tags: allTagsReducer,
     homePopularPosts: homePopularPostsReducer,
     latestPosts: latestPostsReducer,
-    randomPosts: randomPostsReducer
+    randomPosts: randomPostsReducer,
+    tagPosts: tagPostsReducer
 })

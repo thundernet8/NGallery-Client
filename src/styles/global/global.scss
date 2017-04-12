@@ -50,6 +50,15 @@ a:focus,a:hover {
     text-decoration: none;
 }
 
+.clearfix:after,.clearfix:before {
+    content: " ";
+    display: table
+}
+
+.clearfix:after {
+    clear: both
+}
+
 /* Utilities */
 .mt10 {
     margin-top: 10px;

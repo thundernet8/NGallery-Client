@@ -11,6 +11,7 @@ import App from './containers/app'
 import HomePage from './containers/home'
 import LatestPage from './containers/latest'
 import ExplorePage from './containers/explore'
+import PostsPage from './containers/tagPosts' // 包含AllPosts Page 和 TagPosts Page
 
 const saveToken = (state, replace) => {
     const { pathname, search } = state.location
@@ -54,6 +55,8 @@ export default (history, user) => {
                 <Route path="/" component={HomePage} onEnter={triggerEnter} onLeave={triggerLeave}/>
                 <Route path="/latest" component={LatestPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
                 <Route path="/explore" component={ExplorePage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/posts" component={PostsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/posts/tag/:tag" component={PostsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
             </Route>
         </Router>
     )

@@ -35,3 +35,12 @@ export function randomPostsReducer (state = [], action) {
             return state
     }
 }
+
+export function tagPostsReducer (state = [], action) {
+    switch (action.type) {
+        case CONSTANTS.FETCH_TAG_POSTS_SUCCESS:
+            return action.payload
+        default:
+            return state
+    }
+}
