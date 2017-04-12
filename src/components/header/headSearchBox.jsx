@@ -63,7 +63,7 @@ export default class HeadSearchBox extends React.Component {
         return (
             <div className={styles.headSearchWrap}>
                 <div className={ClassNames(styles.headSearch, {[styles.focus]: this.state.focus})}>
-                    <Icon className={styles.searchIcon} type="search" style={{color: 'rgba(255, 255, 255, 0.25)', position: 'absolute'}} />
+                    <Icon className={styles.searchIcon} type="search" style={{position: 'absolute'}} />
                     <input type="text" autoComplete="off" className={styles.searchInput} placeholder="Search more..." spellCheck="false" value={this.state.search} onChange={this.onChange} onFocus={this.onFocus} onBlur={this.onBlur} onKeyPress={this.onKeyPress} />
                 </div>
             </div>

@@ -45,7 +45,7 @@ export default class UserMenu extends React.Component {
 
     render () {
         return (
-            <li className={styles.userProfile}>
+            <li className={ClassNames(styles.headMenuItem, styles.userProfile)}>
                 <a href="javascript:;" onClick={this.handleTouchTap}><img src={this.props.user.avatar || defaultAvatar} /></a>
                 <Popover open={this.state.open} anchorEl={this.state.anchorEl} anchorOrigin={{horizontal: 'middle', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'middle', vertical: 'top'}} onRequestClose={this.handleRequestClose}>

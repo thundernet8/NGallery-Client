@@ -1,5 +1,34 @@
+@import "../../styles/variable";
+
 .main {
     position: relative;
+}
+
+.orderMenu {
+    padding-right: 10px;
+    margin: 8px 0 6px;
+    &>ul {
+        margin: 0;
+        padding: 0;
+        &>li {
+            list-style: none;
+            display: inline-block;
+            margin: 0 0 0 30px;
+            padding: 0;
+            a {
+                color: #a1a8af;
+                font-size: 15px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            &.active {
+                a {
+                    color: $focusColor;
+                }
+            }
+        }
+    }
 }
 
 .postList {
@@ -116,7 +145,7 @@
                 color: rgba(76, 87, 102, .5);
                 padding: 0 3px;
                 &:hover {
-                    color: #ff4081;
+                    color: $focusColor;
                 }
             }
         }

@@ -9,7 +9,12 @@ import {
     randomPostsReducer,
     tagPostsReducer
 }                                                         from './post'
-import { featuredCollectionsReducer }                     from './collection'
+import {
+    featuredCollectionsReducer,
+    collectionsReducer,
+    followingCollectionsReducer,
+    myCollectionsReducer
+}                                                         from './collection'
 import {
     topTagsReducer,
     allTagsReducer
@@ -26,5 +31,8 @@ export default combineReducers({
     homePopularPosts: homePopularPostsReducer,
     latestPosts: latestPostsReducer,
     randomPosts: randomPostsReducer,
-    tagPosts: tagPostsReducer
+    tagPosts: tagPostsReducer,
+    collections: collectionsReducer,
+    followingCollections: followingCollectionsReducer,
+    myCollections: myCollectionsReducer
 })

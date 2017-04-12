@@ -41,8 +41,8 @@ export default class MoreMenu extends React.Component {
 
     render () {
         return (
-            <li className={styles.moreMeun}>
-                <Icon type="more_vert" onClick={this.handleTouchTap} style={{color: 'rgba(255, 255, 255, 0.75)'}} />
+            <li className={ClassNames(styles.headMenuItem, styles.moreMeun)}>
+                <Icon type="more_vert" onClick={this.handleTouchTap} />
                 <Popover open={this.state.open} anchorEl={this.state.anchorEl} anchorOrigin={{horizontal: 'middle', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'middle', vertical: 'top'}} onRequestClose={this.handleRequestClose}>
                     <Menu onItemTouchTap={this.handleMenuItemClick}>

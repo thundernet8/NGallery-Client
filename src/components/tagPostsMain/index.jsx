@@ -8,10 +8,11 @@ import randColor                    from '../../utils/randColor'
 import Icon                         from '../icon'
 import InfiniteScroll               from 'react-infinite-scroller'
 import LineLoader                   from '../lineLoader'
+import * as dateFormatter           from 'date-format'
 
 class TagPostsMain extends React.Component {
     state = {
-        order: 'latest',
+        order: 'popular',
         page: 0,
         images: 0
     }
@@ -22,9 +23,10 @@ class TagPostsMain extends React.Component {
         }
         order = ['latest', 'popular'].indexOf(order) > -1 ? order : 'latest'
         this.setState({
-            order: order
+            order: order,
+            images: 0
         })
-        this.props.getTagPosts(this.props.tag, this.state.order, 1)
+        this.props.getTagPosts(this.props.tag, order, 1)
     }
 
     handleImageLoad = (img) => {
@@ -63,7 +65,7 @@ class TagPostsMain extends React.Component {
                     <div className={styles.inner} style={{backgroundColor: randColor()}}>
                         <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
                         <Link className={styles.postLink} to={`/post/${post._id}`}>
-                            <img onLoad={this.handleImageLoad} src={post.featuredImage.url} />
+                            <img onLoad={this.handleImageLoad} srcSet="" src={post.featuredImage.url} />
                             <div className={styles.counts}>
                                 <em><Icon type="favorite_border" />{post.likes}</em>
                                 <em><Icon type="visibility" />{post.views}</em>
@@ -76,7 +78,7 @@ class TagPostsMain extends React.Component {
                             </Link>
                             <h2>{post.title}</h2>
                             <p>
-                                由<Link to={`/u/${post.author._id}`}>{post.author.name}</Link>发布于<span className={styles.postDate}>{(new Date(post.createdAt)).toDateString()}</span>
+                                由<Link to={`/u/${post.author._id}`}>{post.author.name}</Link>发布于<span className={styles.postDate}>{dateFormatter.asString('yyyy-MM-dd', new Date(post.createdAt))}</span>
                             </p>
                         </div>
                     </div>
@@ -88,7 +90,14 @@ class TagPostsMain extends React.Component {
 
         return (
             <div className={ClassNames(styles.main, 'col-md-10 col-sm-8')}>
-                <div className="clearfix"/>
+                <div className="clearfix">
+                    <div className={ClassNames(styles.orderMenu, 'pull-right')}>
+                        <ul>
+                            <li className={ClassNames({[styles.active]: this.state.order === 'latest'})}><a href="javascript:;" onClick={this.changeOrder.bind(null, 'latest')}>最新</a></li>
+                            <li className={ClassNames({[styles.active]: this.state.order === 'popular'})}><a href="javascript:;" onClick={this.changeOrder.bind(null, 'popular')}>热门</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div className={styles.postList}>
                     <InfiniteScroll className={ClassNames(styles.cards, 'row')} threshold={100} hasMore={true} initialLoad={true} loadMore={this.handleLoadMore} loader={loader}>
                         {items}

@@ -28,7 +28,7 @@
     }
     >a {
         box-shadow: 0 7px 15px rgba(0,0,0,.2);
-        color: #337ab7;
+        color: #343536;
         background: #fff;
         border-radius: 2px;
         display: inline-block;
@@ -36,6 +36,7 @@
         padding: 14px 42px 12px;
         &:hover {
             background: #ebeff1;
+            color: #343536;
             text-decoration: none;
         }
     }

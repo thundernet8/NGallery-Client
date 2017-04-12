@@ -34,8 +34,8 @@ export default class SubmitMenu extends React.Component {
 
     render () {
         return (
-            <li className={styles.submitBtn}>
-                <Icon type="add_circle_outline" onClick={this.handleTouchTap} style={{color: 'rgba(255, 255, 255, 0.75)'}} />
+            <li className={ClassNames(styles.headMenuItem, styles.submitBtn)}>
+                <Icon type="add_circle_outline" onClick={this.handleTouchTap} />
                 <Popover open={this.state.open} anchorEl={this.state.anchorEl} anchorOrigin={{horizontal: 'middle', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'middle', vertical: 'top'}} onRequestClose={this.handleRequestClose}>
                     <Menu>

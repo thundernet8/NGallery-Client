@@ -33,7 +33,7 @@ class HomeFeaturedCollection extends React.Component {
                                     <span>{`${collection.followers} 关注`}</span>}
                                 </div>
                             </div>
-                            <span className={ClassNames(styles.followBtn, 'btn-secondary')}>关注</span>
+                            <span className={ClassNames(styles.followBtn, 'btn-primary')}>关注</span>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ class HomeFeaturedCollection extends React.Component {
                 <div className={ClassNames(styles.sectionHeader, 'clearfix')}>
                     <div className={styles.heading}>
                         <h3>精选藏夹</h3>
-                        <Link className={ClassNames(styles.moreBtn, 'btn-secondary btn-shadow')} to="/collections">MORE</Link>
+                        <Link className={ClassNames(styles.moreBtn, 'btn-primary btn-shadow')} to="/collections">MORE</Link>
                     </div>
                 </div>
                 <div className={ClassNames(styles.row, 'row')}>

@@ -6,7 +6,7 @@ import TagPostsMain                 from '../../components/tagPostsMain'
 import TagPostsSidebar              from '../../components/tagPostsSidebar'
 
 // 当url tag参数为空时即为所有posts展示
-class TagPosts extends React.Component {
+class TagPostsPage extends React.Component {
     render () {
         const tag = this.props.params && this.props.params.tag ? this.props.params.tag : null
         return (
@@ -21,13 +21,11 @@ class TagPosts extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        user: state.user
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TagPosts)
+export default connect(mapStateToProps, mapDispatchToProps)(TagPostsPage)

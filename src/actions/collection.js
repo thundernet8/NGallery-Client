@@ -39,3 +39,138 @@ export const getFeaturedCollections = () => {
         // MockEnd
     }
 }
+
+export const getAllCollections = (page) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: CONSTANTS.FETCH_ALL_COLLECTIONS
+        })
+
+        let state = getState()
+        let offset = state.collections.length // 加载实际分页
+        let limit = 12 // 每页12篇
+
+        if ((page - 1) * limit < offset) {
+            return
+        }
+
+        // Mock
+        Mock.Random.title()
+        Mock.Random.dataImage()
+        Mock.Random.cname()
+        let collections = Mock.mock({
+            // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+            [`list|${limit}`]: [{
+                '_id|1-1000': 1,
+                'name': '@title',
+                'featuredImage': {
+                    'url': '@dataImage(300x225)',
+                    'title': '@title'
+                },
+                'posts|0-100': 10,
+                'followers|0-100': 1,
+                'author': {
+                    '_id|1-1000': 1,
+                    'name': '@cname',
+                    'avatar': '@dataImage(64x64)'
+                }
+            }]
+        }).list
+
+        dispatch({
+            type: CONSTANTS.FETCH_ALL_COLLECTIONS_SUCCESS,
+            payload: page === 1 ? collections : state.collections.concat(collections)
+        })
+        // MockEnd
+    }
+}
+
+export const getFollowingCollections = (page) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: CONSTANTS.FETCH_FOLLOWING_COLLECTIONS
+        })
+
+        let state = getState()
+        let offset = state.followingCollections.length // 加载实际分页
+        let limit = 12 // 每页12篇
+
+        if ((page - 1) * limit < offset) {
+            return
+        }
+
+        // Mock
+        Mock.Random.title()
+        Mock.Random.dataImage()
+        Mock.Random.cname()
+        let collections = Mock.mock({
+            // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+            [`list|${limit}`]: [{
+                '_id|1-1000': 1,
+                'name': '@title',
+                'featuredImage': {
+                    'url': '@dataImage(300x225)',
+                    'title': '@title'
+                },
+                'posts|0-100': 10,
+                'followers|0-100': 1,
+                'author': {
+                    '_id|1-1000': 1,
+                    'name': '@cname',
+                    'avatar': '@dataImage(64x64)'
+                }
+            }]
+        }).list
+
+        dispatch({
+            type: CONSTANTS.FETCH_FOLLOWING_COLLECTIONS_SUCCESS,
+            payload: page === 1 ? collections : state.followingCollections.concat(collections)
+        })
+        // MockEnd
+    }
+}
+
+export const getMyCollections = (page) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: CONSTANTS.FETCH_MY_COLLECTIONS
+        })
+
+        let state = getState()
+        let offset = state.myCollections.length // 加载实际分页
+        let limit = 12 // 每页12篇
+
+        if ((page - 1) * limit < offset) {
+            return
+        }
+
+        // Mock
+        Mock.Random.title()
+        Mock.Random.dataImage()
+        Mock.Random.cname()
+        let collections = Mock.mock({
+            // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+            [`list|${limit}`]: [{
+                '_id|1-1000': 1,
+                'name': '@title',
+                'featuredImage': {
+                    'url': '@dataImage(300x225)',
+                    'title': '@title'
+                },
+                'posts|0-100': 10,
+                'followers|0-100': 1,
+                'author': {
+                    '_id|1-1000': 1,
+                    'name': '@cname',
+                    'avatar': '@dataImage(64x64)'
+                }
+            }]
+        }).list
+
+        dispatch({
+            type: CONSTANTS.FETCH_MY_COLLECTIONS_SUCCESS,
+            payload: page === 1 ? collections : state.myCollections.concat(collections)
+        })
+        // MockEnd
+    }
+}
