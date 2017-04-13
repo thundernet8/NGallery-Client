@@ -19,9 +19,13 @@ export const getFeaturedCollections = () => {
                 '_id|1-1000': 1,
                 'name': '@title',
                 'featuredImage': {
-                    'url': '@dataImage(300x225)',
+                    'url': '@dataImage(400x300)',
                     'title': '@title'
                 },
+                'smallThumbs|0-3': [{
+                    'url': '@dataImage(200x150)',
+                    'title': '@title'
+                }],
                 'posts|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
@@ -58,22 +62,30 @@ export const getAllCollections = (page) => {
         Mock.Random.title()
         Mock.Random.dataImage()
         Mock.Random.cname()
+        Mock.Random.date()
+        Mock.Random.string()
         let collections = Mock.mock({
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             [`list|${limit}`]: [{
                 '_id|1-1000': 1,
                 'name': '@title',
+                'description': '@string(lower, 25, 50)',
                 'featuredImage': {
-                    'url': '@dataImage(300x225)',
+                    'url': '@dataImage(400x300)',
                     'title': '@title'
                 },
+                'smallThumbs|0-3': [{
+                    'url': '@dataImage(200x150)',
+                    'title': '@title'
+                }],
                 'posts|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
                     '_id|1-1000': 1,
                     'name': '@cname',
                     'avatar': '@dataImage(64x64)'
-                }
+                },
+                'createdAt': '@date(yyyy-MM-dd)'
             }]
         }).list
 
@@ -109,9 +121,13 @@ export const getFollowingCollections = (page) => {
                 '_id|1-1000': 1,
                 'name': '@title',
                 'featuredImage': {
-                    'url': '@dataImage(300x225)',
+                    'url': '@dataImage(400x300)',
                     'title': '@title'
                 },
+                'smallThumbs|0-3': [{
+                    'url': '@dataImage(200x150)',
+                    'title': '@title'
+                }],
                 'posts|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
@@ -157,6 +173,10 @@ export const getMyCollections = (page) => {
                     'url': '@dataImage(300x225)',
                     'title': '@title'
                 },
+                'smallThumbs|0-3': [{
+                    'url': '@dataImage(200x150)',
+                    'title': '@title'
+                }],
                 'posts|0-100': 10,
                 'followers|0-100': 1,
                 'author': {

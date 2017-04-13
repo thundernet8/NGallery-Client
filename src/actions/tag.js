@@ -45,6 +45,7 @@ export const getAllTags = () => {
             [`list|10-50`]: [{
                 '_id|1-1000': 10,
                 'name': '@string(lower, 5, 10)',
+                'slug': '@name',
                 'posts|1-150': 20
             }]
         }).list
