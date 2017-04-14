@@ -100,7 +100,7 @@ class CollectionsPage extends React.Component {
             return (
                 <div key={index} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
                     <div className={styles.card}>
-                        <Link className={ClassNames(styles.imgLink, 'clearfix')} to={`/collection/${collection._id}`}>
+                        <Link className={ClassNames(styles.imgLink, 'clearfix')} to={`/collection/${collection.id}`}>
                             <div className={ClassNames(styles.thumb, styles.largeThumb)} style={{backgroundColor: randColor()}}>
                                 <img className={ClassNames(styles.largeThumbImg, styles.preview)} onLoad={this.handleImageLoad} srcSet="" src={collection.featuredImage.url} alt="" title="" />
                                 <img className={ClassNames(styles.largeThumbImg, styles.placeholder)} src={thumbPlaceholder} />
@@ -108,7 +108,7 @@ class CollectionsPage extends React.Component {
                             {smallThumbs}
                         </Link>
                         <div className={styles.info}>
-                            <Link className={styles.authorLink} to={`/u/${collection.author._id}`}>
+                            <Link className={styles.authorLink} to={`/u/${collection.author.id}`}>
                                 <img className={styles.authorAvatar} src={collection.author.avatar} title={collection.author.name} />
                             </Link>
                             <div className={styles.metabox}>

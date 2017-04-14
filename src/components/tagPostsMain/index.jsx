@@ -24,7 +24,8 @@ class TagPostsMain extends React.Component {
         order = ['latest', 'popular'].indexOf(order) > -1 ? order : 'latest'
         this.setState({
             order: order,
-            images: 0
+            images: 0,
+            page: 0
         })
         this.props.getTagPosts(this.props.tag, order, 1)
     }
@@ -64,7 +65,7 @@ class TagPostsMain extends React.Component {
                 <div key={index} className={ClassNames(styles.postItem, 'col-xl-3 col-lg-4 col-sm-6 col-xs-12')}>
                     <div className={styles.inner} style={{backgroundColor: randColor()}}>
                         <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
-                        <Link className={styles.postLink} to={`/post/${post._id}`}>
+                        <Link className={styles.postLink} to={`/post/${post.id}`}>
                             <img onLoad={this.handleImageLoad} srcSet="" src={post.featuredImage.url} />
                             <div className={styles.counts}>
                                 <em><Icon type="favorite_border" />{post.likes}</em>
@@ -73,12 +74,12 @@ class TagPostsMain extends React.Component {
                             </div>
                         </Link>
                         <div className={styles.postInfo}>
-                            <Link className={styles.authorLink} to={`/u/${post.author._id}`}>
+                            <Link className={styles.authorLink} to={`/u/${post.author.id}`}>
                                 <img className={styles.authorAvatar} src={post.author.avatar} title={post.author.name} />
                             </Link>
                             <h2>{post.title}</h2>
                             <p>
-                                由<Link to={`/u/${post.author._id}`}>{post.author.name}</Link>发布于<span className={styles.postDate}>{dateFormatter.asString('yyyy-MM-dd', new Date(post.createdAt))}</span>
+                                由<Link to={`/u/${post.author.id}`}>{post.author.name}</Link>发布于<span className={styles.postDate}>{dateFormatter.asString('yyyy-MM-dd', new Date(post.createdAt))}</span>
                             </p>
                         </div>
                     </div>

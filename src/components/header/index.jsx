@@ -26,7 +26,7 @@ class Header extends React.Component {
 
     render () {
         let user = this.props.user
-        user = user.profile && user.profile._id && user.accessToken ? user : null
+        user = user.profile && user.profile.id && user.accessToken ? user : null
         return (
             <Headroom className={styles.headerWrap} pinStart={64} disableInlineStyles={true}>
                 <nav className={ClassNames(styles.header, styles.primaryNav)}>

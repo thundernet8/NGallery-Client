@@ -35,3 +35,12 @@ export function myCollectionsReducer (state = [], action) {
             return state
     }
 }
+
+export function collectionReducer (state = null, action) {
+    switch (action.type) {
+        case CONSTANTS.FETCH_THE_COLLECTION_SUCCESS:
+            return action.payload
+        default:
+            return state
+    }
+}

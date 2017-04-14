@@ -47,7 +47,7 @@ const authorize = async(token) => {
     try {
         const response = await axiosInstance.get('/me')
         const data = response.data
-        if (data && data._id) {
+        if (data && data.id) {
             return data
         } else {
             return new Error('invalid user profile')
@@ -88,7 +88,7 @@ ssrRouter.route('*').get(async(req, res) => {
         store.dispatch(Actions.setUser(profile))
     }
 
-    const routes = createRouter(history, (profile && profile._id) ? {
+    const routes = createRouter(history, (profile && profile.id) ? {
         profile,
         accessToken: token
     } : null)

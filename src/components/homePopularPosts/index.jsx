@@ -59,9 +59,9 @@ class HomePopularPosts extends React.Component {
                     <div className={styles.boxInner} style={{background: randColor()}}>
                         <h2>{post.title}</h2>
                         <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
-                        <Link className={styles.imgLink} to={`/p/${post._id}`}><img onLoad={this.handleImageLoad} srcSet="" src={post.featuredImage.url} alt="" title={post.title} /></Link>
+                        <Link className={styles.imgLink} to={`/p/${post.id}`}><img onLoad={this.handleImageLoad} srcSet="" src={post.featuredImage.url} alt="" title={post.title} /></Link>
                         <div className={styles.metabox}>
-                            <Link className={styles.authorLink} to={`/u/${post.author._id}`}><img className={styles.authorAvatar} src={post.author.avatar} /><span>{post.author.name}</span></Link>
+                            <Link className={styles.authorLink} to={`/u/${post.author.id}`}><img className={styles.authorAvatar} src={post.author.avatar} /><span>{post.author.name}</span></Link>
                             <div className={styles.counts}>
                                 <em><Icon type="favorite_border" />{post.likes}</em>
                                 <em><Icon type="visibility" />{post.views}</em>

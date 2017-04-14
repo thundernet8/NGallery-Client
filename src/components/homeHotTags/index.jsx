@@ -13,7 +13,7 @@ class HomeHotTags extends React.Component {
         const items = this.props.topTags.map((tag, index) => {
             return (
                 <li key={index} className={styles.tag}>
-                    <a href={`/posts/tag/${tag._id}`}>{`${tag.name} (${tag.posts})`}</a>
+                    <a href={`/posts/tag/${tag.id}`}>{`${tag.name} (${tag.posts})`}</a>
                 </li>
             )
         })

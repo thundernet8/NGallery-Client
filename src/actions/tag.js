@@ -15,7 +15,7 @@ export const getTopTags = (count) => {
         let tags = Mock.mock({
             // 属性 list 的值是一个数组
             [`list|${count}`]: [{
-                '_id|1-1000': 10,
+                'id|1-1000': 10,
                 'name': '@string(lower, 5, 10)',
                 'posts|1-100': 20
             }]
@@ -43,7 +43,7 @@ export const getAllTags = () => {
         let tags = Mock.mock({
             // 属性 list 的值是一个数组
             [`list|10-50`]: [{
-                '_id|1-1000': 10,
+                'id|1-1000': 10,
                 'name': '@string(lower, 5, 10)',
                 'slug': '@name',
                 'posts|1-150': 20

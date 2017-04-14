@@ -44,3 +44,12 @@ export function tagPostsReducer (state = [], action) {
             return state
     }
 }
+
+export function collectionPostsReducer (state = [], action) {
+    switch (action.type) {
+        case CONSTANTS.FETCH_COLLECTION_POSTS_SUCCESS:
+            return action.payload
+        default:
+            return state
+    }
+}

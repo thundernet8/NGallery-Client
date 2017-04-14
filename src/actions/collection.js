@@ -16,7 +16,7 @@ export const getFeaturedCollections = () => {
         let collections = Mock.mock({
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             'list|3': [{
-                '_id|1-1000': 1,
+                'id|1-1000': 1,
                 'name': '@title',
                 'featuredImage': {
                     'url': '@dataImage(400x300)',
@@ -29,7 +29,7 @@ export const getFeaturedCollections = () => {
                 'posts|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
-                    '_id|1-1000': 1,
+                    'id|1-1000': 1,
                     'name': '@cname',
                     'avatar': '@dataImage(64x64)'
                 }
@@ -67,7 +67,7 @@ export const getAllCollections = (page) => {
         let collections = Mock.mock({
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             [`list|${limit}`]: [{
-                '_id|1-1000': 1,
+                'id|1-1000': 1,
                 'name': '@title',
                 'description': '@string(lower, 25, 50)',
                 'featuredImage': {
@@ -81,7 +81,7 @@ export const getAllCollections = (page) => {
                 'posts|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
-                    '_id|1-1000': 1,
+                    'id|1-1000': 1,
                     'name': '@cname',
                     'avatar': '@dataImage(64x64)'
                 },
@@ -115,10 +115,11 @@ export const getFollowingCollections = (page) => {
         Mock.Random.title()
         Mock.Random.dataImage()
         Mock.Random.cname()
+        Mock.Random.date()
         let collections = Mock.mock({
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             [`list|${limit}`]: [{
-                '_id|1-1000': 1,
+                'id|1-1000': 1,
                 'name': '@title',
                 'featuredImage': {
                     'url': '@dataImage(400x300)',
@@ -131,10 +132,12 @@ export const getFollowingCollections = (page) => {
                 'posts|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
-                    '_id|1-1000': 1,
+                    'id|1-1000': 1,
                     'name': '@cname',
                     'avatar': '@dataImage(64x64)'
-                }
+                },
+                'createdAt': '@date(yyyy-MM-dd)'
+                // TODO following date
             }]
         }).list
 
@@ -164,10 +167,11 @@ export const getMyCollections = (page) => {
         Mock.Random.title()
         Mock.Random.dataImage()
         Mock.Random.cname()
+        Mock.Random.date()
         let collections = Mock.mock({
             // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             [`list|${limit}`]: [{
-                '_id|1-1000': 1,
+                'id|1-1000': 1,
                 'name': '@title',
                 'featuredImage': {
                     'url': '@dataImage(300x225)',
@@ -180,16 +184,57 @@ export const getMyCollections = (page) => {
                 'posts|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
-                    '_id|1-1000': 1,
+                    'id|1-1000': 1,
                     'name': '@cname',
                     'avatar': '@dataImage(64x64)'
-                }
+                },
+                'createdAt': '@date(yyyy-MM-dd)'
             }]
         }).list
 
         dispatch({
             type: CONSTANTS.FETCH_MY_COLLECTIONS_SUCCESS,
             payload: page === 1 ? collections : state.myCollections.concat(collections)
+        })
+        // MockEnd
+    }
+}
+
+export const getCollection = (id) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: CONSTANTS.FETCH_THE_COLLECTION
+        })
+
+        // Mock
+        Mock.Random.title()
+        Mock.Random.dataImage()
+        Mock.Random.cname()
+        Mock.Random.date()
+        let collection = Mock.mock({
+            'id|1-1000': 1,
+            'name': '@title',
+            'featuredImage': {
+                'url': '@dataImage(300x225)',
+                'title': '@title'
+            },
+            'smallThumbs|0-3': [{
+                'url': '@dataImage(200x150)',
+                'title': '@title'
+            }],
+            'posts|0-100': 10,
+            'followers|0-100': 1,
+            'author': {
+                'id|1-1000': 1,
+                'name': '@cname',
+                'avatar': '@dataImage(64x64)'
+            },
+            'createdAt': '@date(yyyy-MM-dd)'
+        })
+
+        dispatch({
+            type: CONSTANTS.FETCH_THE_COLLECTION_SUCCESS,
+            payload: collection
         })
         // MockEnd
     }
