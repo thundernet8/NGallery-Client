@@ -30,6 +30,8 @@ import {
     allTagsReducer
 }                                                         from './tag'
 
+import { searchResultReducer }                            from './search'
+
 export default combineReducers({
     routing: routerReducer,
     user,
@@ -53,5 +55,6 @@ export default combineReducers({
     authorLikes: authorLikesReducer,
     authorCollections: authorCollectionsReducer,
     authorFollowers: authorFollowersReducer,
-    authorFollowing: authorFollowingReducer
+    authorFollowing: authorFollowingReducer,
+    searchResult: searchResultReducer
 })

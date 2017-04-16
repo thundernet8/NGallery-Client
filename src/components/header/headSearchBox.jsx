@@ -54,7 +54,7 @@ export default class HeadSearchBox extends React.Component {
 
     onKeyPress = (event) => {
         if (this.state.search && event.key === 'Enter') {
-            const url = '/search?key=' + this.state.search
+            const url = '/search?q=' + this.state.search
             this.props.router.push(url)
         }
     }

@@ -27,7 +27,7 @@ class TagPostsSidebar extends React.Component {
                     <Link className={ClassNames({[styles.active]: this.props.tag === tag.slug})} to={`/posts/tag/${tag.slug}`}>
                         <span className={styles.tagContent}>
                             <span className={ClassNames(styles.tagName)}>{tag.name}</span>
-                            <span className={styles.badge}>{tag.posts > 99 ? '99+' : tag.posts.toString()}</span>
+                            <span className={styles.badge}>{tag.postsCount > 99 ? '99+' : tag.postsCount.toString()}</span>
                         </span>
                     </Link>
                 </li>
