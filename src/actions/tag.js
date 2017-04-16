@@ -17,7 +17,7 @@ export const getTopTags = (count) => {
             [`list|${count}`]: [{
                 'id|1-1000': 10,
                 'name': '@string(lower, 5, 10)',
-                'posts|1-100': 20
+                'postsCount|1-100': 20
             }]
         }).list
 
@@ -46,7 +46,7 @@ export const getAllTags = () => {
                 'id|1-1000': 10,
                 'name': '@string(lower, 5, 10)',
                 'slug': '@name',
-                'posts|1-150': 20
+                'postsCount|1-150': 20
             }]
         }).list
 

@@ -51,7 +51,7 @@ class CollectionsPage extends React.Component {
         // TODO
     }
 
-    handleImageLoad = (img) => {
+    handleImageLoad = () => {
         this.setState({
             images: ++this.state.images
         })
@@ -76,8 +76,6 @@ class CollectionsPage extends React.Component {
         // 路由中的filter变化
         if ((nextProps.params && (!this.props.params || this.props.params.filter !== nextProps.params.filter)) ||
         (!nextProps.params && this.props.params)) {
-            console.log(this.props.params)
-            console.log(nextProps.params)
             this.setState({
                 page: 0,
                 images: 0
@@ -108,13 +106,13 @@ class CollectionsPage extends React.Component {
                             {smallThumbs}
                         </Link>
                         <div className={styles.info}>
-                            <Link className={styles.authorLink} to={`/u/${collection.author.id}`}>
-                                <img className={styles.authorAvatar} src={collection.author.avatar} title={collection.author.name} />
+                            <Link className={styles.authorLink} to={`/user/${collection.author.id}`}>
+                                <img className={styles.authorAvatar} src={collection.author.avatar} title={collection.author.nickname} />
                             </Link>
                             <div className={styles.metabox}>
                                 <h2 className={styles.name}>{collection.name}</h2>
                                 <div className={styles.counts}>
-                                    <span>{`${collection.posts} 文章`}</span>
+                                    <span>{`${collection.postsCount} 文章`}</span>
                                     {collection.followers &&
                                     <span className={styles.point}></span>}
                                     {collection.followers &&

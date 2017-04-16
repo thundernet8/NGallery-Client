@@ -26,7 +26,7 @@ export const getFeaturedCollections = () => {
                     'url': '@dataImage(200x150)',
                     'title': '@title'
                 }],
-                'posts|0-100': 10,
+                'postsCount|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
                     'id|1-1000': 1,
@@ -78,7 +78,7 @@ export const getAllCollections = (page) => {
                     'url': '@dataImage(200x150)',
                     'title': '@title'
                 }],
-                'posts|0-100': 10,
+                'postsCount|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
                     'id|1-1000': 1,
@@ -129,7 +129,7 @@ export const getFollowingCollections = (page) => {
                     'url': '@dataImage(200x150)',
                     'title': '@title'
                 }],
-                'posts|0-100': 10,
+                'postsCount|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
                     'id|1-1000': 1,
@@ -181,7 +181,7 @@ export const getMyCollections = (page) => {
                     'url': '@dataImage(200x150)',
                     'title': '@title'
                 }],
-                'posts|0-100': 10,
+                'postsCount|0-100': 10,
                 'followers|0-100': 1,
                 'author': {
                     'id|1-1000': 1,
@@ -222,7 +222,7 @@ export const getCollection = (id) => {
                 'url': '@dataImage(200x150)',
                 'title': '@title'
             }],
-            'posts|0-100': 10,
+            'postsCount|0-100': 10,
             'followers|0-100': 1,
             'author': {
                 'id|1-1000': 1,

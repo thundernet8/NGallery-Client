@@ -23,12 +23,12 @@ class HomeFeatured extends React.Component {
                         <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
                         <Link className={styles.imgLink} to={`/p/${post.id}`}><img srcSet="" src={post.featuredImage.url} alt="" title={post.title} /></Link>
                         <div className={styles.metabox}>
-                            <Link className={styles.authorLink} to={`/u/${post.author.id}`}><img className={styles.authorAvatar} src={post.author.avatar} /><span>{post.author.name}</span></Link>
+                            <Link className={styles.authorLink} to={`/user/${post.author.id}`}><img className={styles.authorAvatar} src={post.author.avatar} /><span>{post.author.nickname}</span></Link>
                             <div className={styles.counts}>
                                 <em><Icon type="favorite_border" />{post.likes}</em>
                                 <em><Icon type="visibility" />{post.views}</em>
                                 {/* <em><Icon type="turned_in_not" />8</em> favorites count */}
-                                <em><Icon type="chat_bubble_outline" />{post.comments}</em>
+                                <em><Icon type="chat_bubble_outline" />{post.commentsCount}</em>
                             </div>
                         </div>
                     </div>

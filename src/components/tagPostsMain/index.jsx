@@ -70,16 +70,16 @@ class TagPostsMain extends React.Component {
                             <div className={styles.counts}>
                                 <em><Icon type="favorite_border" />{post.likes}</em>
                                 <em><Icon type="visibility" />{post.views}</em>
-                                <em><Icon type="chat_bubble_outline" />{post.comments}</em>
+                                <em><Icon type="chat_bubble_outline" />{post.commentsCount}</em>
                             </div>
                         </Link>
                         <div className={styles.postInfo}>
-                            <Link className={styles.authorLink} to={`/u/${post.author.id}`}>
-                                <img className={styles.authorAvatar} src={post.author.avatar} title={post.author.name} />
+                            <Link className={styles.authorLink} to={`/user/${post.author.id}`}>
+                                <img className={styles.authorAvatar} src={post.author.avatar} title={post.author.nickname} />
                             </Link>
                             <h2>{post.title}</h2>
                             <p>
-                                由<Link to={`/u/${post.author.id}`}>{post.author.name}</Link>发布于<span className={styles.postDate}>{dateFormatter.asString('yyyy-MM-dd', new Date(post.createdAt))}</span>
+                                由<Link to={`/user/${post.author.id}`}>{post.author.nickname}</Link>发布于<span className={styles.postDate}>{dateFormatter.asString('yyyy-MM-dd', new Date(post.createdAt))}</span>
                             </p>
                         </div>
                     </div>

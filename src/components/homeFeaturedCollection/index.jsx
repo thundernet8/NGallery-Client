@@ -20,13 +20,13 @@ class HomeFeaturedCollection extends React.Component {
                     <div className={styles.card} style={{backgroundColor: randColor()}}>
                         <Link className={styles.imgLink} to={`/collection/${collection.id}`}><img srcSet="" src={collection.featuredImage.url} alt="" title="" /></Link>
                         <div className={styles.info}>
-                            <Link className={styles.authorLink} to={`/u/${collection.author.id}`}>
-                                <img className={styles.authorAvatar} src={collection.author.avatar} title={collection.author.name} />
+                            <Link className={styles.authorLink} to={`/user/${collection.author.id}`}>
+                                <img className={styles.authorAvatar} src={collection.author.avatar} title={collection.author.nickname} />
                             </Link>
                             <div className={styles.metabox}>
                                 <h2 className={styles.name}>{collection.name}</h2>
                                 <div className={styles.counts}>
-                                    <span>{`${collection.posts} 文章`}</span>
+                                    <span>{`${collection.postsCount} 文章`}</span>
                                     {collection.followers &&
                                     <span className={styles.point}></span>}
                                     {collection.followers &&

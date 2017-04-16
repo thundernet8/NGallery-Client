@@ -28,7 +28,7 @@ export const getFeaturedPosts = () => {
                     'title': '@title'
                 },
                 'likes|0-1000': 20,
-                'comments|0-100': 1,
+                'commentsCount|0-100': 1,
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
@@ -81,7 +81,7 @@ export const getHomePopularPosts = (page) => {
                     'title': '@title'
                 },
                 'likes|0-1000': 20,
-                'comments|0-100': 1,
+                'commentsCount|0-100': 1,
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
@@ -133,7 +133,7 @@ export const getLatestPosts = (page) => {
                     'title': '@title'
                 },
                 'likes|0-1000': 20,
-                'comments|0-100': 1,
+                'commentsCount|0-100': 1,
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
@@ -185,7 +185,7 @@ export const getRandomPosts = (page) => {
                     'title': '@title'
                 },
                 'likes|0-1000': 20,
-                'comments|0-100': 1,
+                'commentsCount|0-100': 1,
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
@@ -239,7 +239,7 @@ export const getTagPosts = (tag, order, page) => {
                     'title': '@title'
                 },
                 'likes|0-1000': 20,
-                'comments|0-100': 1,
+                'commentsCount|0-100': 1,
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
@@ -293,7 +293,7 @@ export const getCollectionPosts = (collectionId, order, page) => {
                     'title': '@title'
                 },
                 'likes|0-1000': 20,
-                'comments|0-100': 1,
+                'commentsCount|0-100': 1,
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,

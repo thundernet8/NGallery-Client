@@ -64,9 +64,7 @@ class CollectionPage extends React.Component {
 
         if (!collection) {
             return (
-                <div className={styles.content}>
-                    <div className={styles.spinnerWrap}><Spinner size={60} thickness={2} /></div>
-                </div>
+                <div className={styles.spinnerWrap}><Spinner size={60} thickness={2} /></div>
             )
         }
 
@@ -101,11 +99,11 @@ class CollectionPage extends React.Component {
                                 <div className={styles.infoBox}>
                                     <div className={ClassNames(styles.heading, 'clearfix')}>
                                         <div className={ClassNames(styles.avatar)}>
-                                            <Link className={styles.authorLink} to={`/u/${post.author.id}`}><img src={post.author.avatar} /></Link>
+                                            <Link className={styles.authorLink} to={`/user/${post.author.id}`}><img src={post.author.avatar} /></Link>
                                         </div>
                                         <div className={ClassNames(styles.title)}>
                                             <h2>{post.title}</h2>
-                                            <p>由<Link to={`/u/${post.author.id}`}>{post.author.name}</Link>{`创建于${dateFormatter.asString('yyyy / MM / dd', new Date(post.createdAt))}`}</p>
+                                            <p>由<Link to={`/user/${post.author.id}`}>{post.author.nickname}</Link>{`创建于${dateFormatter.asString('yyyy / MM / dd', new Date(post.createdAt))}`}</p>
                                         </div>
                                     </div>
                                     <div className={styles.tags}>
@@ -115,10 +113,10 @@ class CollectionPage extends React.Component {
                                         {post.lastReviewer &&
                                         <div className="pull-left">
                                             <img src={post.lastReviewer.avatar} />
-                                            <Link to={`/u/${post.lastReviewer.id}`}>{post.lastReviewer.name}</Link>最近留下了足迹
+                                            <Link to={`/user/${post.lastReviewer.id}`}>{post.lastReviewer.name}</Link>最近留下了足迹
                                         </div>}
                                         <div className="pull-right">
-                                            <span className={styles.comments}><Icon type="chat_bubble" />{post.comments}</span>
+                                            <span className={styles.comments}><Icon type="chat_bubble" />{post.commentsCount}</span>
                                         </div>
                                     </div>
                                     <div className={ClassNames(styles.footer, 'clearfix')}>
@@ -158,8 +156,8 @@ class CollectionPage extends React.Component {
                             <h1>{this.props.collection.name}</h1>
                             <div className={styles.infoBox}>
                                 <div className={ClassNames(styles.creator, 'clearfix')}>
-                                    <Link className={styles.creatorLink} to={`/u/${collection.author.id}`}><img src={collection.author.avatar} /></Link>
-                                    <p>由<Link to={`/u/${collection.author.id}`}>{collection.author.name}</Link>{`创建于${dateFormatter.asString('yyyy / MM / dd', new Date(collection.createdAt))}`}</p>
+                                    <Link className={styles.creatorLink} to={`/user/${collection.author.id}`}><img src={collection.author.avatar} /></Link>
+                                    <p>由<Link to={`/user/${collection.author.id}`}>{collection.author.nickname}</Link>{`创建于${dateFormatter.asString('yyyy / MM / dd', new Date(collection.createdAt))}`}</p>
                                 </div>
                                 <div className={styles.collectionIntro}><p>{collection.description}</p></div>
                                 <div className={styles.collectionMeta}>

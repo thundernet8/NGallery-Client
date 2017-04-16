@@ -1,6 +1,14 @@
 import { combineReducers }                                from 'redux'
 import { routerReducer }                                  from 'react-router-redux'
-import user                                               from './user'
+import user, {
+    authorReducer,
+    authorPostsReducer,
+    authorShareReducer,
+    authorLikesReducer,
+    authorCollectionsReducer,
+    authorFollowersReducer,
+    authorFollowingReducer
+}                                                         from './user'
 import history                                            from './history'
 import {
     featuredPostsReducer,
@@ -38,5 +46,12 @@ export default combineReducers({
     followingCollections: followingCollectionsReducer,
     myCollections: myCollectionsReducer,
     collectionPosts: collectionPostsReducer,
-    collection: collectionReducer
+    collection: collectionReducer,
+    author: authorReducer,
+    authorPosts: authorPostsReducer,
+    authorShare: authorShareReducer,
+    authorLikes: authorLikesReducer,
+    authorCollections: authorCollectionsReducer,
+    authorFollowers: authorFollowersReducer,
+    authorFollowing: authorFollowingReducer
 })
