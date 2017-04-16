@@ -1,3 +1,5 @@
+@import "../../styles/variable";
+
 .sidebar {
 
 }
@@ -50,7 +52,7 @@
             -webkit-transition: background .2s ease;
             transition: background .2s ease;
             .tagName {
-                color: #337ab7;
+                color: $primaryColor;
             }
         }
 
