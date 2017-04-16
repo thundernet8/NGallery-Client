@@ -8,7 +8,15 @@ import appConfig                                                            from
 
 // Containers
 import App from './containers/app'
-import Home from './containers/home'
+import HomePage from './containers/home'
+import LatestPage from './containers/latest'
+import ExplorePage from './containers/explore'
+import PostsPage from './containers/tagPosts' // 包含AllPosts Page 和 TagPosts Page
+import CollectionsPage from './containers/collections'
+import CollectionPage from './containers/collection'
+import AuthorPage from './containers/author' // 包含多个Tabs
+import SearchResultsPage from './containers/search'
+import ArticlePage from './containers/article'
 
 const saveToken = (state, replace) => {
     const { pathname, search } = state.location
@@ -48,8 +56,19 @@ export default (history, user) => {
 
     return (
         <Router history={history} /* render={applyRouterMiddleware(useScroll())} */>
-            <Route path="/" component={App}>
-                <IndexRoute component={Home} onEnter={triggerEnter} onLeave={triggerLeave}/>
+            <Route component={App}>
+                <Route path="/" component={HomePage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/latest" component={LatestPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/explore" component={ExplorePage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/posts" component={PostsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/posts/tag/:tag" component={PostsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/collections" component={CollectionsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/collections/:filter" component={CollectionsPage} onEnter={/* requireAuth */ triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/collection/:id" component={CollectionPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/user/:id" component={AuthorPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/user/:id/:tab" component={AuthorPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/search" component={SearchResultsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/article/:slug" component={ArticlePage} onEnter={triggerEnter} onLeave={triggerLeave}/>
             </Route>
         </Router>
     )

@@ -27,7 +27,7 @@ ReactDOM.render(
     <ThemeProvider>
         <LocalProvider language={navigator.language}>
             <Provider store={store}>
-                {createRouter(createBrowserHistory(), (me.profile && me.profile._id) ? me : null)}
+                {createRouter(createBrowserHistory(), (me.profile && me.profile.id) ? me : null)}
             </Provider>
         </LocalProvider>
     </ThemeProvider>,

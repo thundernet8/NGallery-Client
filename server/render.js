@@ -47,7 +47,7 @@ const authorize = async(token) => {
     try {
         const response = await axiosInstance.get('/me')
         const data = response.data
-        if (data && data._id) {
+        if (data && data.id) {
             return data
         } else {
             return new Error('invalid user profile')
@@ -88,7 +88,7 @@ ssrRouter.route('*').get(async(req, res) => {
         store.dispatch(Actions.setUser(profile))
     }
 
-    const routes = createRouter(history, (profile && profile._id) ? {
+    const routes = createRouter(history, (profile && profile.id) ? {
         profile,
         accessToken: token
     } : null)
@@ -108,7 +108,7 @@ ssrRouter.route('*').get(async(req, res) => {
                 res.render(path.resolve(__dirname, '../dist/notFound.ejs'))
             } else {                
                 const reduxState = JSON.stringify(store.getState())
-                const html = renderToString(
+                const html = process.env.NODE_ENV === 'development' ? '' : renderToString(
                     <ThemeProvider userAgent={global.navigator.userAgent}>
                         <LocalProvider language={global.navigator.language}>
                             <Provider store={store}>{<RouterContext {...nextState} />}</Provider>

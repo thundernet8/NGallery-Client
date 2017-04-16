@@ -33,7 +33,8 @@ let appProdConfig = {
             //'react-ga',
             'axios',
             'material-ui',
-            'rc-notification'
+            'rc-notification',
+            'react-headroom'
         ]
     },
 
