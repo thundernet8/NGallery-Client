@@ -66,7 +66,7 @@ export default (history, user) => {
                 <Route path="/collection/:id" component={CollectionPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
                 <Route path="/user/:id" component={AuthorPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
                 <Route path="/user/:id/:tab" component={AuthorPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
-                <Route path="/search/:search" component={SearchResultsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/search" component={SearchResultsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
             </Route>
         </Router>
     )

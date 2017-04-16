@@ -17,7 +17,7 @@ export default class HeadSearchBox extends React.Component {
 
     state = {
         focus: false,
-        search: ''
+        search: this.props.search
     }
 
     handleTouchTap = (event) => {

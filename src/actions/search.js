@@ -14,7 +14,7 @@ export const getSearchResults = (key, type, page) => {
         if (!key) {
             dispatch({
                 type: CONSTANTS.FETCH_SEARCH_RESULTS_SUCCESS,
-                payload: {total: 0, items: []}
+                payload: {key, total: 0, items: []}
             })
         }
 
@@ -83,7 +83,7 @@ export const getSearchResults = (key, type, page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_SEARCH_RESULTS_SUCCESS,
-            payload: page === 1 ? {total, items} : {total, items: state.searchResult.items.concat(items)}
+            payload: page === 1 ? {key, total, items} : {key, total, items: state.searchResult.items.concat(items)}
         })
         // MockEnd
     }

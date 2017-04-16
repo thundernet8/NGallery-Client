@@ -54,6 +54,20 @@ class SearchResultsPage extends React.Component {
         this.setState({
             page: Math.ceil(nextProps.searchResult.items.length / 12)
         })
+        if (nextProps.location.search !== this.props.location.search) {
+            this.setState({
+                page: 0,
+                images: 0
+            })
+            this.props.getSearchResults(getUrlQuery('q', nextProps.location.search), this.state.type, 1)
+        }
+    }
+
+    shouldComponentUpdate (nextProps, nextState) {
+        if (nextProps.location.search !== this.props.location.search || nextState.type !== this.state.type || nextState.page !== this.state.page) {
+            return true
+        }
+        return false
     }
 
     render () {
@@ -110,7 +124,7 @@ class SearchResultsPage extends React.Component {
                     </div>
                 </div>
                 <div className={styles.itemList}>
-                    <InfiniteScroll className={ClassNames(styles.cards, 'row')} threshold={100} hasMore={true} initialLoad={false} loadMore={this.handleLoadMore} loader={loader}>
+                    <InfiniteScroll className={ClassNames(styles.cards, 'row')} threshold={100} hasMore={items.length < total} initialLoad={false} loadMore={this.handleLoadMore} loader={loader}>
                         {elements}
                     </InfiniteScroll>
                 </div>

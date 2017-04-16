@@ -14,6 +14,7 @@ import { Link }                                             from 'react-router'
 import CategoryMenu                                         from './categoryMenu'
 import CollectionMenu                                       from './collectionMenu'
 import Icon                                                 from '../icon'
+import { getUrlQuery }                                      from '../../utils/url'
 
 class Header extends React.Component {
     static propTypes = {
@@ -35,7 +36,7 @@ class Header extends React.Component {
                             <a href="/"><img className={styles.logo} src={logo} /></a>
                         </div>
                         <div className={styles.headSearchContainer}>
-                            <HeadSearchBox router={this.props.router} />
+                            <HeadSearchBox router={this.props.router} search={getUrlQuery('q', this.props.location.search)} />
                         </div>
                         <ul className={styles.headMenuItems}>
                             {!user &&
