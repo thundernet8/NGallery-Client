@@ -1,3 +1,5 @@
+@import "../../styles/variable";
+
 .headerWrap {
     
 }
@@ -172,6 +174,13 @@
 
 .moreMeun {
 
+}
+
+.moreMeunItem {
+    a,
+    a:hover {
+        color: $weightColor;
+    }
 }
 
 .secondaryNav {

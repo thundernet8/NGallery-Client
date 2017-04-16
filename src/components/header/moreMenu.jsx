@@ -7,6 +7,7 @@ import MenuItem                                             from 'material-ui/Me
 import Icon                                                 from '../icon'
 import defaultAvatar                                        from '../../assets/images/avatar.png'
 import appConfig                                            from '../../../config'
+import { Link }                                             from 'react-router'
 
 export default class MoreMenu extends React.Component {
     static propTypes = {
@@ -35,7 +36,7 @@ export default class MoreMenu extends React.Component {
     }
 
     handleMenuItemClick = (event, menuItem, index) => {
-        location.href = menuItem.props.value
+        // location.href = menuItem.props.value
         this.handleRequestClose()
     }
 
@@ -46,9 +47,9 @@ export default class MoreMenu extends React.Component {
                 <Popover open={this.state.open} anchorEl={this.state.anchorEl} anchorOrigin={{horizontal: 'middle', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'middle', vertical: 'top'}} onRequestClose={this.handleRequestClose}>
                     <Menu onItemTouchTap={this.handleMenuItemClick}>
-                        <MenuItem primaryText="FAQ" value="/faq" />
-                        <MenuItem primaryText="条款" value="/terms" />
-                        <MenuItem primaryText="关于" value="/about" />
+                        <MenuItem className={styles.moreMeunItem}><Link to="/article/faq">FAQ</Link></MenuItem>
+                        <MenuItem className={styles.moreMeunItem}><Link to="/article/terms">条款</Link></MenuItem>
+                        <MenuItem className={styles.moreMeunItem}><Link to="/article/about">关于</Link></MenuItem>
                     </Menu>
                 </Popover>
             </li>

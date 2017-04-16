@@ -4,11 +4,12 @@ import * as styles                                              from './style.sc
 import RaisedButton                                             from 'material-ui/RaisedButton'
 import appConfig                                                from '../../../config'
 import banner                                                   from '../../assets/images/gallery.jpg'
+import bannerGray                                                   from '../../assets/images/gallery-gray.jpg'
 
 export default class VistorBanner extends React.Component {
     render () {
         return (
-            <div className={styles.indexBanner} style={{backgroundImage: `url(${banner})`}}>
+            <div className={styles.indexBanner} style={{backgroundImage: `url(${Math.random() > 0.5 ? banner : bannerGray})`}}>
                 <div className={styles.inner}>
                     <div className={styles.content}>
                         <h1>放松、愉悦、飨以身心</h1>

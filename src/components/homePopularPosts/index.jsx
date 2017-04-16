@@ -35,7 +35,6 @@ class HomePopularPosts extends React.Component {
         if (this.state.images !== this.props.homePopularPosts.length) {
             return
         }
-        console.log(this.state.page)
         this.props.getPopularPosts(this.state.page + 1)
     }
 
@@ -77,7 +76,7 @@ class HomePopularPosts extends React.Component {
 
         return (
             <div className={styles.homePosts}>
-                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={true} loadMore={this.handleLoadMore} loader={loader}>
+                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} initialLoad={true} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={true} loadMore={this.handleLoadMore} loader={loader}>
                     {items}
                 </Masonry>
             </div>

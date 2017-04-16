@@ -16,6 +16,7 @@ import CollectionsPage from './containers/collections'
 import CollectionPage from './containers/collection'
 import AuthorPage from './containers/author' // 包含多个Tabs
 import SearchResultsPage from './containers/search'
+import ArticlePage from './containers/article'
 
 const saveToken = (state, replace) => {
     const { pathname, search } = state.location
@@ -67,6 +68,7 @@ export default (history, user) => {
                 <Route path="/user/:id" component={AuthorPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
                 <Route path="/user/:id/:tab" component={AuthorPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
                 <Route path="/search" component={SearchResultsPage} onEnter={triggerEnter} onLeave={triggerLeave}/>
+                <Route path="/article/:slug" component={ArticlePage} onEnter={triggerEnter} onLeave={triggerLeave}/>
             </Route>
         </Router>
     )

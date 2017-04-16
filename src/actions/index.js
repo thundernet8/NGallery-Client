@@ -3,6 +3,7 @@ import * as post           from './post'
 import * as collection     from './collection'
 import * as tag            from './tag'
 import * as search         from './search'
+import * as article        from './article'
 
 export default Object.assign(
     {},
@@ -10,5 +11,6 @@ export default Object.assign(
     post,
     collection,
     tag,
-    search
+    search,
+    article
 )
