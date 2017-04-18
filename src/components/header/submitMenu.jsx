@@ -7,11 +7,6 @@ import MenuItem                                             from 'material-ui/Me
 import Icon                                                 from '../icon'
 
 export default class SubmitMenu extends React.Component {
-    static propTypes = {
-        open: PropTypes.bool,
-        anchorEl: PropTypes.any
-    }
-
     state = {
         open: false,
         anchorEl: null

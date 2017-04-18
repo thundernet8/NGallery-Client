@@ -9,7 +9,7 @@ export function featuredCollectionsReducer (state = [], action) {
     }
 }
 
-export function collectionsReducer (state = [], action) {
+export function collectionsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_ALL_COLLECTIONS_SUCCESS:
             return action.payload
@@ -18,7 +18,7 @@ export function collectionsReducer (state = [], action) {
     }
 }
 
-export function followingCollectionsReducer (state = [], action) {
+export function followingCollectionsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_FOLLOWING_COLLECTIONS_SUCCESS:
             return action.payload
@@ -27,7 +27,7 @@ export function followingCollectionsReducer (state = [], action) {
     }
 }
 
-export function myCollectionsReducer (state = [], action) {
+export function myCollectionsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_MY_COLLECTIONS_SUCCESS:
             return action.payload

@@ -5,7 +5,7 @@ import ClassNames                   from 'classnames'
 import * as styles                  from './style.scss'
 import randColor                    from '../../utils/randColor'
 import Icon                         from '../../components/icon'
-import InfiniteScroll               from 'react-infinite-scroller'
+import InfiniteScroll               from 'react-limited-infinite-scroll'
 import LineLoader                   from '../../components/lineLoader'
 import Actions                      from '../../actions'
 import thumbPlaceholder             from '../../assets/images/thumb-placeholder.png'
@@ -78,7 +78,7 @@ class SearchResultsPage extends React.Component {
         }
 
         const {total, items} = this.props.searchResult
-        const elements = items.map((item, index) => {
+        const itemElements = items.map((item, index) => {
             return (
                 <div key={index} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
                     <div className={styles.card} style={{backgroundColor: randColor()}}>
@@ -124,8 +124,8 @@ class SearchResultsPage extends React.Component {
                     </div>
                 </div>
                 <div className={styles.itemList}>
-                    <InfiniteScroll className={ClassNames(styles.cards, 'row')} threshold={100} hasMore={items.length < total} initialLoad={false} loadMore={this.handleLoadMore} loader={loader}>
-                        {elements}
+                    <InfiniteScroll className={ClassNames(styles.cards, 'row')} limit={5} threshold={100} hasMore={total === undefined || items.length < total} autoLoad={false} loadNext={this.handleLoadMore} spinLoader={loader}>
+                        {itemElements}
                     </InfiniteScroll>
                 </div>
             </div>

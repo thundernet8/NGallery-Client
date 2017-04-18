@@ -9,11 +9,6 @@ import defaultAvatar                                        from '../../assets/i
 import appConfig                                            from '../../../config'
 
 export default class UserMenu extends React.Component {
-    static propTypes = {
-        open: PropTypes.bool,
-        anchorEl: PropTypes.any
-    }
-
     state = {
         open: false,
         anchorEl: null

@@ -10,10 +10,7 @@ export const getTopTags = (count) => {
         })
 
         // Mock
-        Mock.Random.title()
-        Mock.Random.string()
         let tags = Mock.mock({
-            // 属性 list 的值是一个数组
             [`list|${count}`]: [{
                 'id|1-1000': 10,
                 'name': '@string(lower, 5, 10)',
@@ -38,10 +35,7 @@ export const getAllTags = () => {
         })
 
         // Mock
-        Mock.Random.title()
-        Mock.Random.string()
         let tags = Mock.mock({
-            // 属性 list 的值是一个数组
             [`list|10-50`]: [{
                 'id|1-1000': 10,
                 'name': '@string(lower, 5, 10)',

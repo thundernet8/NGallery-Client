@@ -34,40 +34,40 @@ export function authorReducer (state = null, action) {
     }
 }
 
-export function authorPostsReducer (state = [], action) {
+export function authorPostsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_AUTHOR_POSTS_SUCCESS:
             return action.payload
         case CONSTANTS.CLEAN_AUTHOR_POSTS:
-            return []
+            return {total: state.total, items: []}
         default:
             return state
     }
 }
 
-export function authorShareReducer (state = [], action) {
+export function authorShareReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_AUTHOR_SHARE_SUCCESS:
             return action.payload
         case CONSTANTS.CLEAN_AUTHOR_SHARE:
-            return []
+            return {total: state.total, items: []}
         default:
             return state
     }
 }
 
-export function authorLikesReducer (state = [], action) {
+export function authorLikesReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_AUTHOR_LIKES_SUCCESS:
             return action.payload
         case CONSTANTS.CLEAN_AUTHOR_LIKES:
-            return []
+            return {total: state.total, items: []}
         default:
             return state
     }
 }
 
-export function authorCollectionsReducer (state = [], action) {
+export function authorCollectionsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_AUTHOR_COLLECTIONS_SUCCESS:
             return action.payload
@@ -76,23 +76,23 @@ export function authorCollectionsReducer (state = [], action) {
     }
 }
 
-export function authorFollowersReducer (state = [], action) {
+export function authorFollowersReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_AUTHOR_FOLLOWERS_SUCCESS:
             return action.payload
         case CONSTANTS.CLEAN_AUTHOR_FOLLOWERS:
-            return []
+            return {total: state.total, items: []}
         default:
             return state
     }
 }
 
-export function authorFollowingReducer (state = [], action) {
+export function authorFollowingReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_AUTHOR_FOLLOWING_SUCCESS:
             return action.payload
         case CONSTANTS.CLEAN_AUTHOR_FOLLOWING:
-            return []
+            return {total: state.total, items: []}
         default:
             return state
     }

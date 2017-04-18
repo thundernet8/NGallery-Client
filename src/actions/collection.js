@@ -10,20 +10,16 @@ export const getFeaturedCollections = () => {
         })
 
         // Mock
-        Mock.Random.title()
-        Mock.Random.dataImage()
-        Mock.Random.cname()
         let collections = Mock.mock({
-            // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             'list|3': [{
                 'id|1-1000': 1,
                 'name': '@title',
                 'featuredImage': {
-                    'url': '@dataImage(400x300)',
+                    'url': '@dataImage(400x300, "")',
                     'title': '@title'
                 },
                 'smallThumbs|0-3': [{
-                    'url': '@dataImage(200x150)',
+                    'url': '@dataImage(200x150, "")',
                     'title': '@title'
                 }],
                 'postsCount|0-100': 10,
@@ -31,7 +27,7 @@ export const getFeaturedCollections = () => {
                 'author': {
                     'id|1-1000': 1,
                     'name': '@cname',
-                    'avatar': '@dataImage(64x64)'
+                    'avatar': '@dataImage(64x64, "")'
                 }
             }]
         }).list
@@ -59,23 +55,17 @@ export const getAllCollections = (page) => {
         }
 
         // Mock
-        Mock.Random.title()
-        Mock.Random.dataImage()
-        Mock.Random.cname()
-        Mock.Random.date()
-        Mock.Random.string()
         let collections = Mock.mock({
-            // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             [`list|${limit}`]: [{
                 'id|1-1000': 1,
                 'name': '@title',
                 'description': '@string(lower, 25, 50)',
                 'featuredImage': {
-                    'url': '@dataImage(400x300)',
+                    'url': '@dataImage(400x300, "")',
                     'title': '@title'
                 },
                 'smallThumbs|0-3': [{
-                    'url': '@dataImage(200x150)',
+                    'url': '@dataImage(200x150, "")',
                     'title': '@title'
                 }],
                 'postsCount|0-100': 10,
@@ -83,7 +73,7 @@ export const getAllCollections = (page) => {
                 'author': {
                     'id|1-1000': 1,
                     'name': '@cname',
-                    'avatar': '@dataImage(64x64)'
+                    'avatar': '@dataImage(64x64, "")'
                 },
                 'createdAt': '@date(yyyy-MM-dd)'
             }]
@@ -91,7 +81,7 @@ export const getAllCollections = (page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_ALL_COLLECTIONS_SUCCESS,
-            payload: page === 1 ? collections : state.collections.concat(collections)
+            payload: page === 1 ? {total: 100, items: collections} : {total: 100, items: state.collections.concat(collections)}
         })
         // MockEnd
     }
@@ -112,21 +102,16 @@ export const getFollowingCollections = (page) => {
         }
 
         // Mock
-        Mock.Random.title()
-        Mock.Random.dataImage()
-        Mock.Random.cname()
-        Mock.Random.date()
         let collections = Mock.mock({
-            // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
             [`list|${limit}`]: [{
                 'id|1-1000': 1,
                 'name': '@title',
                 'featuredImage': {
-                    'url': '@dataImage(400x300)',
+                    'url': '@dataImage(400x300, "")',
                     'title': '@title'
                 },
                 'smallThumbs|0-3': [{
-                    'url': '@dataImage(200x150)',
+                    'url': '@dataImage(200x150, "")',
                     'title': '@title'
                 }],
                 'postsCount|0-100': 10,
@@ -134,7 +119,7 @@ export const getFollowingCollections = (page) => {
                 'author': {
                     'id|1-1000': 1,
                     'name': '@cname',
-                    'avatar': '@dataImage(64x64)'
+                    'avatar': '@dataImage(64x64, "")'
                 },
                 'createdAt': '@date(yyyy-MM-dd)'
                 // TODO following date
@@ -143,7 +128,7 @@ export const getFollowingCollections = (page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_FOLLOWING_COLLECTIONS_SUCCESS,
-            payload: page === 1 ? collections : state.followingCollections.concat(collections)
+            payload: page === 1 ? {total: 100, items: collections} : {total: 100, items: state.followingCollections.concat(collections)}
         })
         // MockEnd
     }
@@ -174,11 +159,11 @@ export const getMyCollections = (page) => {
                 'id|1-1000': 1,
                 'name': '@title',
                 'featuredImage': {
-                    'url': '@dataImage(300x225)',
+                    'url': '@dataImage(300x225, "")',
                     'title': '@title'
                 },
                 'smallThumbs|0-3': [{
-                    'url': '@dataImage(200x150)',
+                    'url': '@dataImage(200x150, "")',
                     'title': '@title'
                 }],
                 'postsCount|0-100': 10,
@@ -186,7 +171,7 @@ export const getMyCollections = (page) => {
                 'author': {
                     'id|1-1000': 1,
                     'name': '@cname',
-                    'avatar': '@dataImage(64x64)'
+                    'avatar': '@dataImage(64x64, "")'
                 },
                 'createdAt': '@date(yyyy-MM-dd)'
             }]
@@ -194,7 +179,7 @@ export const getMyCollections = (page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_MY_COLLECTIONS_SUCCESS,
-            payload: page === 1 ? collections : state.myCollections.concat(collections)
+            payload: page === 1 ? {total: 100, items: collections} : {total: 100, items: state.myCollections.concat(collections)}
         })
         // MockEnd
     }
@@ -215,11 +200,11 @@ export const getCollection = (id) => {
             'id|1-1000': 1,
             'name': '@title',
             'featuredImage': {
-                'url': '@dataImage(300x225)',
+                'url': '@dataImage(300x225, "")',
                 'title': '@title'
             },
             'smallThumbs|0-3': [{
-                'url': '@dataImage(200x150)',
+                'url': '@dataImage(200x150, "")',
                 'title': '@title'
             }],
             'postsCount|0-100': 10,
@@ -227,7 +212,7 @@ export const getCollection = (id) => {
             'author': {
                 'id|1-1000': 1,
                 'name': '@cname',
-                'avatar': '@dataImage(64x64)'
+                'avatar': '@dataImage(64x64, "")'
             },
             'createdAt': '@date(yyyy-MM-dd)'
         })

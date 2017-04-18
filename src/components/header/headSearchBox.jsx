@@ -10,11 +10,6 @@ import appConfig                                            from '../../../confi
 import createBrowserHistory                                 from 'history/lib/createBrowserHistory'
 
 export default class HeadSearchBox extends React.Component {
-    static propTypes = {
-        focus: PropTypes.bool,
-        search: PropTypes.string
-    }
-
     state = {
         focus: false,
         search: this.props.search

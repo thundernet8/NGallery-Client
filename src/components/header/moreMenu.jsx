@@ -10,11 +10,6 @@ import appConfig                                            from '../../../confi
 import { Link }                                             from 'react-router'
 
 export default class MoreMenu extends React.Component {
-    static propTypes = {
-        open: PropTypes.bool,
-        anchorEl: PropTypes.any
-    }
-
     state = {
         open: false,
         anchorEl: null

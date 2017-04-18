@@ -33,22 +33,16 @@ export const getSearchResults = (key, type, page) => {
         }
 
         // Mock
-        Mock.Random.title()
-        Mock.Random.dataImage()
-        Mock.Random.cname()
-        Mock.Random.date()
         let items = Mock.mock({
-            // 属性 list 的值是一个数组
             [`list|${limit}`]: [{
-                // 属性 id 是一个自增数，起始值为 1，每次增 1
                 'id|+1': 1,
                 'title': '@title',
                 'images|1-5': [{
-                    'url': '@dataImage()',
+                    'url': '@dataImage(0, "")',
                     'title': '@title'
                 }],
                 'featuredImage': {
-                    'url': '@dataImage(400x300)',
+                    'url': '@dataImage(400x300, "")',
                     'title': '@title'
                 },
                 'likes|0-1000': 20,
@@ -57,18 +51,18 @@ export const getSearchResults = (key, type, page) => {
                 'author': {
                     'id|1-1000': 1,
                     'name': '@cname',
-                    'avatar': '@dataImage(64x64)'
+                    'avatar': '@dataImage(64x64, "")'
                 },
                 'createdAt': '@date(yyyy-MM-dd)',
                 'lastReviewer': {
                     'id|1-1000': 10,
                     'name': '@cname',
-                    'avatar': '@dataImage(64x64)'
+                    'avatar': '@dataImage(64x64, "")'
                 },
                 'voters|0-20': [{
                     'id|1-1000': 10,
                     'name': '@cname',
-                    'avatar': '@dataImage(64x64)'
+                    'avatar': '@dataImage(64x64, "")'
                 }],
                 'tags|1-25': [{
                     'id|1-1000': 10,

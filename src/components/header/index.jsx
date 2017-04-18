@@ -17,10 +17,6 @@ import Icon                                                 from '../icon'
 import { getUrlQuery }                                      from '../../utils/url'
 
 class Header extends React.Component {
-    static propTypes = {
-
-    }
-
     state = {
 
     }

@@ -6,7 +6,7 @@ import * as styles                  from './style.scss'
 import Actions                      from '../../actions'
 import randColor                    from '../../utils/randColor'
 import Icon                         from '../icon'
-import InfiniteScroll               from 'react-infinite-scroller'
+import InfiniteScroll               from 'react-limited-infinite-scroll'
 import LineLoader                   from '../lineLoader'
 import * as dateFormatter           from 'date-format'
 
@@ -37,22 +37,17 @@ class TagPostsMain extends React.Component {
     }
 
     handleLoadMore = () => {
-        if (this.state.images !== this.props.tagPosts.length) {
+        if (this.state.images !== this.props.tagPosts.items.length) {
             return
         }
         this.props.getTagPosts(this.props.tag, this.state.order, this.state.page + 1)
     }
 
-    // componentWillMount () {
-    //     this.props.getTagPosts(this.props.tag, this.state.order, 1)
-    // }
-
     componentWillReceiveProps (nextProps) {
         if (nextProps.tag !== this.props.tag) {
-            console.log('tag change')
             this.props.getTagPosts(this.props.tag, this.state.order, 1)
         }
-        if (nextProps.tagPosts.length > this.props.tagPosts.length) {
+        if (nextProps.tagPosts.items.length > this.props.tagPosts.items.length) {
             this.setState({
                 page: ++this.state.page
             })
@@ -60,7 +55,8 @@ class TagPostsMain extends React.Component {
     }
 
     render () {
-        const items = this.props.tagPosts.map((post, index) => {
+        const {total, items} = this.props.tagPosts
+        const itemElements = items.map((post, index) => {
             return (
                 <div key={index} className={ClassNames(styles.postItem, 'col-xl-3 col-lg-4 col-sm-6 col-xs-12')}>
                     <div className={styles.inner} style={{backgroundColor: randColor()}}>
@@ -100,8 +96,8 @@ class TagPostsMain extends React.Component {
                     </div>
                 </div>
                 <div className={styles.postList}>
-                    <InfiniteScroll className={ClassNames(styles.cards, 'row')} threshold={100} hasMore={true} initialLoad={true} loadMore={this.handleLoadMore} loader={loader}>
-                        {items}
+                    <InfiniteScroll className={ClassNames(styles.cards, 'row')} limit={5} threshold={100} hasMore={total === undefined || items.length < total} autoLoad={true} loadNext={this.handleLoadMore} spinLoader={loader}>
+                        {itemElements}
                     </InfiniteScroll>
                 </div>
             </div>

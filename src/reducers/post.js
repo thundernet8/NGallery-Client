@@ -9,7 +9,7 @@ export function featuredPostsReducer (state = [], action) {
     }
 }
 
-export function homePopularPostsReducer (state = [], action) {
+export function homePopularPostsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_HOME_POPULAR_POSTS_SUCCESS:
             return action.payload
@@ -18,7 +18,7 @@ export function homePopularPostsReducer (state = [], action) {
     }
 }
 
-export function latestPostsReducer (state = [], action) {
+export function latestPostsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_LATEST_POSTS_SUCCESS:
             return action.payload
@@ -27,7 +27,7 @@ export function latestPostsReducer (state = [], action) {
     }
 }
 
-export function randomPostsReducer (state = [], action) {
+export function randomPostsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_RANDOM_POSTS_SUCCESS:
             return action.payload
@@ -36,7 +36,7 @@ export function randomPostsReducer (state = [], action) {
     }
 }
 
-export function tagPostsReducer (state = [], action) {
+export function tagPostsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_TAG_POSTS_SUCCESS:
             return action.payload
@@ -45,7 +45,7 @@ export function tagPostsReducer (state = [], action) {
     }
 }
 
-export function collectionPostsReducer (state = [], action) {
+export function collectionPostsReducer (state = {items: []}, action) {
     switch (action.type) {
         case CONSTANTS.FETCH_COLLECTION_POSTS_SUCCESS:
             return action.payload

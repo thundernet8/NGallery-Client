@@ -5,7 +5,7 @@ import ClassNames                   from 'classnames'
 import * as styles                  from '../../containers/author/style.scss'
 import randColor                    from '../../utils/randColor'
 import Icon                         from '../../components/icon'
-import InfiniteScroll               from 'react-infinite-scroller'
+import InfiniteScroll               from 'react-limited-infinite-scroll'
 import LineLoader                   from '../../components/lineLoader'
 import Actions                      from '../../actions'
 import thumbPlaceholder             from '../../assets/images/thumb-placeholder.png'
@@ -25,7 +25,7 @@ class AuthorCollectionsTab extends React.Component {
     }
 
     handleLoadMore = () => {
-        if (this.state.images !== this.props.authorCollections.length) {
+        if (this.state.images !== this.props.authorCollections.items.length) {
             return
         }
         this.props.getAuthorCollections(this.props.author, this.state.page + 1)
@@ -36,7 +36,7 @@ class AuthorCollectionsTab extends React.Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        if (nextProps.authorCollections.length > this.props.authorCollections.length) {
+        if (nextProps.authorCollections.items.length > this.props.authorCollections.items.length) {
             this.setState({
                 page: ++this.state.page
             })
@@ -53,7 +53,8 @@ class AuthorCollectionsTab extends React.Component {
     }
 
     render () {
-        const items = this.props.authorCollections.map((collection, index) => {
+        const {total, items} = this.props.authorCollections
+        const itemElements = items.map((collection, index) => {
             const smallThumbs = collection.smallThumbs.map((smallThumb, index) => {
                 return (
                     <div key={index} className={ClassNames(styles.thumb, styles.smallThumb)} style={{backgroundColor: randColor()}}>
@@ -98,8 +99,8 @@ class AuthorCollectionsTab extends React.Component {
 
         return (
             <div className={styles.cards}>
-                <InfiniteScroll className={'row'} threshold={100} hasMore={true} initialLoad={false} loadMore={this.handleLoadMore} loader={loader}>
-                    {items}
+                <InfiniteScroll className={'row'} limit={5} threshold={100} hasMore={total === undefined || items.length < total} autoLoad={false} loadNext={this.handleLoadMore} spinLoader={loader}>
+                    {itemElements}
                 </InfiniteScroll>
             </div>
         )

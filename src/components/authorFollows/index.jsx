@@ -5,7 +5,7 @@ import ClassNames                   from 'classnames'
 import * as styles                  from '../../containers/author/style.scss'
 import randColor                    from '../../utils/randColor'
 import Icon                         from '../../components/icon'
-import InfiniteScroll               from 'react-infinite-scroller'
+import InfiniteScroll               from 'react-limited-infinite-scroll'
 import LineLoader                   from '../../components/lineLoader'
 import Actions                      from '../../actions'
 import thumbPlaceholder             from '../../assets/images/thumb-placeholder.png'
@@ -47,7 +47,7 @@ class AuthorFollowsTab extends React.Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        const length = this.getItems(nextProps).length
+        const length = this.getItems(nextProps).items.length
         if (length) {
             this.setState({
                 page: Math.ceil(length / 12)
@@ -64,7 +64,8 @@ class AuthorFollowsTab extends React.Component {
     }
 
     render () {
-        const items = this.getItems().map((item, index) => {
+        const {total, items} = this.getItems()
+        const itemElements = items.map((item, index) => {
             const stats = item.followersCount ? `${item.followersCount} 粉丝 - ${item.followingCount} 关注` : `${item.followingCount} 关注`
             return (
                 <div key={index} className="col-md-4 col-sm-4 col-sm-6 col-xs-12">
@@ -87,8 +88,8 @@ class AuthorFollowsTab extends React.Component {
 
         return (
             <div className={styles.cards}>
-                <InfiniteScroll className={'row'} threshold={100} hasMore={true} initialLoad={false} loadMore={this.handleLoadMore} loader={loader}>
-                    {items}
+                <InfiniteScroll className={'row'} limit={5} threshold={100} hasMore={total === undefined || items.length < total} autoLoad={false} loadNext={this.handleLoadMore} spinLoader={loader}>
+                    {itemElements}
                 </InfiniteScroll>
             </div>
         )
