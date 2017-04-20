@@ -53,3 +53,30 @@ export function collectionPostsReducer (state = {items: []}, action) {
             return state
     }
 }
+
+export function shareListReducer (state = {items: []}, action) {
+    switch (action.type) {
+        case CONSTANTS.FETCH_SHARE_LIST_SUCCESS:
+            return action.payload
+        default:
+            return state
+    }
+}
+
+export function randSharesReducer (state = [], action) {
+    switch (action.type) {
+        case CONSTANTS.FETCH_RANDOM_SHARES_SUCCESS:
+            return action.payload
+        default:
+            return state
+    }
+}
+
+export function randGalleriesReducer (state = [], action) {
+    switch (action.type) {
+        case CONSTANTS.FETCH_RANDOM_GALLERIES_SUCCESS:
+            return action.payload
+        default:
+            return state
+    }
+}

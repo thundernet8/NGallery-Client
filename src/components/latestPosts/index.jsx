@@ -32,7 +32,7 @@ class LatestPosts extends React.Component {
     }
 
     handleLoadMore = () => {
-        if (this.state.images !== this.props.latestPosts.length) {
+        if (this.state.images !== this.props.latestPosts.items.length) {
             return
         }
         console.log(this.state.page)
@@ -45,7 +45,7 @@ class LatestPosts extends React.Component {
 
     componentWillReceiveProps (nextProps) {
         console.log('componentWillReceiveProps')
-        if (nextProps.latestPosts.length > this.props.latestPosts.length) {
+        if (nextProps.latestPosts.items.length > this.props.latestPosts.items.length) {
             this.setState({
                 page: ++this.state.page
             })
@@ -53,7 +53,8 @@ class LatestPosts extends React.Component {
     }
 
     render () {
-        const items = this.props.latestPosts.map((post, index) => {
+        const {total, items} = this.props.latestPosts
+        const itemElements = items.map((post, index) => {
             return (
                 <div key={index} className={ClassNames(styles.masonryBox, 'animated scaleFadeIn')} style={{width: 'calc((100% - 40px) / 3)', background: randColor()}}>
                     <div className={styles.boxInner} style={{background: randColor()}}>
@@ -77,8 +78,8 @@ class LatestPosts extends React.Component {
 
         return (
             <div className={ClassNames(styles.postsGrid, styles.latestPosts)}>
-                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={true} loadMore={this.handleLoadMore} loader={loader}>
-                    {items}
+                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={total === undefined || items.length < total} loadMore={this.handleLoadMore} loader={loader}>
+                    {itemElements}
                 </Masonry>
             </div>
         )

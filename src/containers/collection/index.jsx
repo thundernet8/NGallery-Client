@@ -167,7 +167,7 @@ class CollectionPage extends React.Component {
                                         <span className={styles.metrics}>关注者</span>
                                     </div>
                                     <div className="pull-left">
-                                        <span className={styles.count}>{collection.posts}</span>
+                                        <span className={styles.count}>{collection.postsCount}</span>
                                         <span className={styles.metrics}>文章</span>
                                     </div>
                                 </div>

@@ -10,7 +10,7 @@ const pick = (arr) => {
 
 const randomSizes = ['300x250', '250x250', '240x400', '336x280', '600x300', '300x600', '280x336', '400x240', '250x300']
 
-const dataImage = (size, text = '') => {
+const dataImage = (width, height, text = '') => {
     let canvas
     if (typeof document !== 'undefined') {
         canvas = document.createElement('canvas')
@@ -19,19 +19,20 @@ const dataImage = (size, text = '') => {
         canvas = new Canvas()
     }
 
-    let ctx = canvas && canvas.getContext && canvas.getContext("2d")
+    let ctx = canvas && canvas.getContext && canvas.getContext('2d')
     if (!canvas || !ctx) return ''
 
-    if (!size) size = pick(randomSizes)
+    if (!width || !height) {
+        let size = pick(randomSizes)
+        size = size.split('x')
+        width = parseInt(size[0], 10)
+        height = parseInt(size[1], 10)
+    }
 
-    size = size.split('x')
-
-    let width = parseInt(size[0], 10),
-        height = parseInt(size[1], 10),
-        background = randColor(),
-        foreground = '#FFF',
-        text_height = 14,
-        font = 'sans-serif';
+    let background = randColor()
+    let foreground = '#FFF'
+    let textHeight = 14
+    let font = 'sans-serif'
 
     canvas.width = width
     canvas.height = height
@@ -40,8 +41,8 @@ const dataImage = (size, text = '') => {
     ctx.fillStyle = background
     ctx.fillRect(0, 0, width, height)
     ctx.fillStyle = foreground
-    ctx.font = 'bold ' + text_height + 'px ' + font
-    ctx.fillText(text, (width / 2), (height / 2), width)
+    ctx.font = 'bold ' + textHeight + 'px ' + font
+    text && ctx.fillText(text, (width / 2), (height / 2), width)
     return canvas.toDataURL('image/png')
 }
 

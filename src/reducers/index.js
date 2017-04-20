@@ -16,7 +16,10 @@ import {
     latestPostsReducer,
     randomPostsReducer,
     tagPostsReducer,
-    collectionPostsReducer
+    collectionPostsReducer,
+    shareListReducer,
+    randSharesReducer,
+    randGalleriesReducer
 }                                                         from './post'
 import {
     featuredCollectionsReducer,
@@ -59,5 +62,8 @@ export default combineReducers({
     authorFollowers: authorFollowersReducer,
     authorFollowing: authorFollowingReducer,
     searchResult: searchResultReducer,
-    article: articleReducer
+    article: articleReducer,
+    shareList: shareListReducer,
+    randShares: randSharesReducer,
+    randGalleries: randGalleriesReducer
 })

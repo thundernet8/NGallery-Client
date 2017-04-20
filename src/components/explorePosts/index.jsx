@@ -32,10 +32,9 @@ class ExplorePosts extends React.Component {
     }
 
     handleLoadMore = () => {
-        if (this.state.images !== this.props.randomPosts.length) {
+        if (this.state.images !== this.props.randomPosts.items.length) {
             return
         }
-        console.log(this.state.page)
         this.props.getRandomPosts(this.state.page)
     }
 
@@ -44,8 +43,7 @@ class ExplorePosts extends React.Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        console.log('componentWillReceiveProps')
-        if (nextProps.randomPosts.length > this.props.randomPosts.length) {
+        if (nextProps.randomPosts.items.length > this.props.randomPosts.items.length) {
             this.setState({
                 page: ++this.state.page
             })
@@ -53,7 +51,8 @@ class ExplorePosts extends React.Component {
     }
 
     render () {
-        const items = this.props.randomPosts.map((post, index) => {
+        const {total, items} = this.props.randomPosts
+        const itemElements = items.map((post, index) => {
             return (
                 <div key={index} className={ClassNames(styles.masonryBox, 'animated scaleFadeIn')} style={{width: 'calc((100% - 40px) / 3)', background: randColor()}}>
                     <div className={styles.boxInner} style={{background: randColor()}}>
@@ -77,8 +76,8 @@ class ExplorePosts extends React.Component {
 
         return (
             <div className={ClassNames(styles.postsGrid, styles.explorePosts)}>
-                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={true} loadMore={this.handleLoadMore} loader={loader}>
-                    {items}
+                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={total === undefined || items.length < total} loadMore={this.handleLoadMore} loader={loader}>
+                    {itemElements}
                 </Masonry>
             </div>
         )

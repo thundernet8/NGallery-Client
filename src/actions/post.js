@@ -27,7 +27,7 @@ export const getFeaturedPosts = () => {
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
-                    'name': '@cname',
+                    'nickname': '@cname',
                     'avatar': '@dataImage(64x64, "")'
                 }
             }]
@@ -75,7 +75,7 @@ export const getHomePopularPosts = (page) => {
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
-                    'name': '@cname',
+                    'nickname': '@cname',
                     'avatar': '@dataImage(64x64, "")'
                 }
             }]
@@ -83,7 +83,7 @@ export const getHomePopularPosts = (page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_HOME_POPULAR_POSTS_SUCCESS,
-            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.homePopularPosts.concat(posts)}
+            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.homePopularPosts.items.concat(posts)}
         })
         // MockEnd
     }
@@ -122,7 +122,7 @@ export const getLatestPosts = (page) => {
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
-                    'name': '@cname',
+                    'nickname': '@cname',
                     'avatar': '@dataImage(64x64, "")'
                 }
             }]
@@ -130,7 +130,7 @@ export const getLatestPosts = (page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_LATEST_POSTS_SUCCESS,
-            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.latestPosts.concat(posts)}
+            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.latestPosts.items.concat(posts)}
         })
         // MockEnd
     }
@@ -169,7 +169,7 @@ export const getRandomPosts = (page) => {
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
-                    'name': '@cname',
+                    'nickname': '@cname',
                     'avatar': '@dataImage(64x64, "")'
                 }
             }]
@@ -177,7 +177,7 @@ export const getRandomPosts = (page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_RANDOM_POSTS_SUCCESS,
-            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.randomPosts.concat(posts)}
+            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.randomPosts.items.concat(posts)}
         })
         // MockEnd
     }
@@ -217,7 +217,7 @@ export const getTagPosts = (tag, order, page) => {
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
-                    'name': '@cname',
+                    'nickname': '@cname',
                     'avatar': '@dataImage(64x64, "")'
                 },
                 'createdAt': '@date(yyyy-MM-dd)'
@@ -226,7 +226,7 @@ export const getTagPosts = (tag, order, page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_TAG_POSTS_SUCCESS,
-            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.tagPosts.concat(posts)}
+            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.tagPosts.items.concat(posts)}
         })
         // MockEnd
     }
@@ -265,18 +265,18 @@ export const getCollectionPosts = (collectionId, order, page) => {
                 'views|10-10000': 100,
                 'author': {
                     'id|1-1000': 1,
-                    'name': '@cname',
+                    'nickname': '@cname',
                     'avatar': '@dataImage(64x64, "")'
                 },
                 'createdAt': '@date(yyyy-MM-dd)',
                 'lastReviewer': {
                     'id|1-1000': 10,
-                    'name': '@cname',
+                    'nickname': '@cname',
                     'avatar': '@dataImage(64x64, "")'
                 },
                 'voters|0-20': [{
                     'id|1-1000': 10,
-                    'name': '@cname',
+                    'nickname': '@cname',
                     'avatar': '@dataImage(64x64, "")'
                 }],
                 'tags|1-25': [{
@@ -290,7 +290,138 @@ export const getCollectionPosts = (collectionId, order, page) => {
 
         dispatch({
             type: CONSTANTS.FETCH_COLLECTION_POSTS_SUCCESS,
-            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.collectionPosts.concat(posts)}
+            payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.collectionPosts.items.concat(posts)}
+        })
+        // MockEnd
+    }
+}
+
+export const getShareList = (order, page) => {
+    // order - popular|latest|toplike|random
+    return (dispatch, getState) => {
+        dispatch({
+            type: CONSTANTS.FETCH_SHARE_LIST
+        })
+
+        let state = getState()
+        let offset = state.shareList.length // 加载实际分页
+        let limit = 12 // 每页12篇
+
+        if (page !== 1 && (page - 1) * limit < offset) {
+            return
+        }
+
+        // Mock
+        let posts = Mock.mock({
+            [`list|${limit}`]: [{
+                'id|+1': 1,
+                'title': '@title',
+                'images|1-5': [{
+                    'url': '@dataImage(0, "")',
+                    'title': '@title'
+                }],
+                'featuredImage': {
+                    'url': '@dataImage(400x600, "")',
+                    'title': '@title',
+                    'width': 400,
+                    'height': 600
+                },
+                'likes|0-1000': 20,
+                'views|10-10000': 100,
+                'author': {
+                    'id|1-1000': 1,
+                    'nickname': '@cname',
+                    'avatar': '@dataImage(64x64, "")'
+                },
+                'createdAt': '@date(yyyy-MM-dd)'
+            }]
+        }).list
+
+        setTimeout(function () {
+            dispatch({
+                type: CONSTANTS.FETCH_SHARE_LIST_SUCCESS,
+                payload: page === 1 ? {total: 100, items: posts} : {total: 100, items: state.shareList.items.concat(posts)}
+            })
+        }, 3000)
+        // MockEnd
+    }
+}
+
+export const getRandShares = (count = 5) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: CONSTANTS.FETCH_RANDOM_SHARES
+        })
+
+        // Mock
+        let shares = Mock.mock({
+            [`list|${count}`]: [{
+                'id|+1': 1,
+                'title': '@title',
+                'images|1-5': [{
+                    'url': '@dataImage(0, "")',
+                    'title': '@title'
+                }],
+                'featuredImage': {
+                    'url': '@dataImage(400x600, "")',
+                    'title': '@title',
+                    'width': 400,
+                    'height': 600
+                },
+                'likes|0-1000': 20,
+                'views|10-10000': 100,
+                'author': {
+                    'id|1-1000': 1,
+                    'nickname': '@cname',
+                    'avatar': '@dataImage(64x64, "")'
+                },
+                'createdAt': '@date(yyyy-MM-dd)'
+            }]
+        }).list
+
+        dispatch({
+            type: CONSTANTS.FETCH_RANDOM_SHARES_SUCCESS,
+            payload: shares
+        })
+        // MockEnd
+    }
+}
+
+export const getRandGalleries = (count = 5) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: CONSTANTS.FETCH_RANDOM_GALLERIES
+        })
+
+        // Mock
+        let galleries = Mock.mock({
+            [`list|${count}`]: [{
+                'id|+1': 1,
+                'title': '@title',
+                'images|1-5': [{
+                    'url': '@dataImage(0, "")',
+                    'title': '@title'
+                }],
+                'featuredImage': {
+                    'url': '@dataImage(400x300, "")',
+                    'title': '@title',
+                    'width': 400,
+                    'height': 300
+                },
+                'likes|0-1000': 20,
+                'views|10-10000': 100,
+                'author': {
+                    'id|1-1000': 1,
+                    'nickname': '@cname',
+                    'avatar': '@dataImage(64x64, "")'
+                },
+                'createdAt': '@date(yyyy-MM-dd)'
+            }]
+        }).list
+
+        dispatch({
+            type: CONSTANTS.FETCH_RANDOM_GALLERIES_SUCCESS,
+            payload: galleries
         })
         // MockEnd
     }

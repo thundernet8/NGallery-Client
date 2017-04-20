@@ -32,7 +32,7 @@ class HomePopularPosts extends React.Component {
     }
 
     handleLoadMore = () => {
-        if (this.state.images !== this.props.homePopularPosts.length) {
+        if (this.state.images !== this.props.homePopularPosts.items.length) {
             return
         }
         this.props.getPopularPosts(this.state.page + 1)
@@ -44,7 +44,7 @@ class HomePopularPosts extends React.Component {
 
     componentWillReceiveProps (nextProps) {
         console.log('componentWillReceiveProps')
-        if (nextProps.homePopularPosts.length > this.props.homePopularPosts.length) {
+        if (nextProps.homePopularPosts.items.length > this.props.homePopularPosts.items.length) {
             this.setState({
                 page: ++this.state.page
             })
@@ -52,7 +52,8 @@ class HomePopularPosts extends React.Component {
     }
 
     render () {
-        const items = this.props.homePopularPosts.map((post, index) => {
+        const {total, items} = this.props.homePopularPosts
+        const itemElements = items.map((post, index) => {
             return (
                 <div key={index} className={ClassNames(styles.masonryBox, 'animated scaleFadeIn')} style={{width: 'calc((100% - 40px) / 3)', background: randColor()}}>
                     <div className={styles.boxInner} style={{background: randColor()}}>
@@ -76,8 +77,8 @@ class HomePopularPosts extends React.Component {
 
         return (
             <div className={styles.homePosts}>
-                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} initialLoad={true} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={true} loadMore={this.handleLoadMore} loader={loader}>
-                    {items}
+                <Masonry className={ClassNames(styles.row, styles.masonryWrap)} ref={this.referMasonry} initialLoad={true} sizes={sizes} style={{margin: '0 auto'}} pack={true} threshold={100} hasMore={total === undefined || items.length < total} loadMore={this.handleLoadMore} loader={loader}>
+                    {itemElements}
                 </Masonry>
             </div>
         )
