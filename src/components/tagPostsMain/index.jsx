@@ -5,7 +5,6 @@ import ClassNames                   from 'classnames'
 import * as styles                  from './style.scss'
 import Actions                      from '../../actions'
 import randColor                    from '../../utils/randColor'
-import Icon                         from '../icon'
 import InfiniteScroll               from 'react-limited-infinite-scroll'
 import LineLoader                   from '../lineLoader'
 import * as dateFormatter           from 'date-format'
@@ -60,13 +59,13 @@ class TagPostsMain extends React.Component {
             return (
                 <div key={index} className={ClassNames(styles.postItem, 'col-xl-3 col-lg-4 col-sm-6 col-xs-12')}>
                     <div className={styles.inner} style={{backgroundColor: randColor()}}>
-                        <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
+                        <span className={styles.saveBtn} title="添加至收藏">+ <i className="fa fa-bookmark-o" /></span>
                         <Link className={styles.postLink} to={`/post/${post.id}`}>
                             <img onLoad={this.handleImageLoad} srcSet="" src={post.featuredImage.url} />
                             <div className={styles.counts}>
-                                <em><Icon type="favorite_border" />{post.likes}</em>
-                                <em><Icon type="visibility" />{post.views}</em>
-                                <em><Icon type="chat_bubble_outline" />{post.commentsCount}</em>
+                                <em><i className="fa fa-heart" />{post.likes}</em>
+                                <em><i className="fa fa-eye" />{post.views}</em>
+                                <em><i className="fa fa-comments" />{post.commentsCount}</em>
                             </div>
                         </Link>
                         <div className={styles.postInfo}>

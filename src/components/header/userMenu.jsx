@@ -4,7 +4,6 @@ import * as styles                                          from './style.scss'
 import Popover                                              from 'material-ui/Popover'
 import Menu                                                 from 'material-ui/Menu'
 import MenuItem                                             from 'material-ui/MenuItem'
-import Icon                                                 from '../icon'
 import defaultAvatar                                        from '../../assets/images/avatar.png'
 import appConfig                                            from '../../../config'
 

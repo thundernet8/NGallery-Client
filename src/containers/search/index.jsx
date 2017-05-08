@@ -4,7 +4,6 @@ import { Link }                     from 'react-router'
 import ClassNames                   from 'classnames'
 import * as styles                  from './style.scss'
 import randColor                    from '../../utils/randColor'
-import Icon                         from '../../components/icon'
 import InfiniteScroll               from 'react-limited-infinite-scroll'
 import LineLoader                   from '../../components/lineLoader'
 import Actions                      from '../../actions'
@@ -83,14 +82,14 @@ class SearchResultsPage extends React.Component {
                 <div key={index} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
                     <div className={styles.card} style={{backgroundColor: randColor()}}>
                         <div className={styles.body}>
-                            <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
+                            <span className={styles.saveBtn} title="添加至收藏">+ <i className="fa fa-bookmark-o" /></span>
                             <Link className={styles.postLink} to={`/post/${item.id}`}>
                                 <img onLoad={this.handleImageLoad} srcSet="" src={item.featuredImage.url} alt="" title={item.title} /></Link>
                             <div className={styles.metabox}>
                                 <div className={styles.counts}>
-                                    <em><Icon type="favorite_border" />{item.likes}</em>
-                                    <em><Icon type="visibility" />{item.views}</em>
-                                    <em><Icon type="chat_bubble_outline" />{item.commentsCount}</em>
+                                    <em><i className="fa fa-heart" />{item.likes}</em>
+                                    <em><i className="fa fa-eye" />{item.views}</em>
+                                    <em><i className="fa fa-comments" />{item.commentsCount}</em>
                                 </div>
                             </div>
                         </div>

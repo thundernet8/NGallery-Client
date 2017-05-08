@@ -4,7 +4,6 @@ import * as styles                                          from './style.scss'
 import Popover                                              from 'material-ui/Popover'
 import Menu                                                 from 'material-ui/Menu'
 import MenuItem                                             from 'material-ui/MenuItem'
-import Icon                                                 from '../icon'
 import defaultAvatar                                        from '../../assets/images/avatar.png'
 import appConfig                                            from '../../../config'
 import { Link }                                             from 'react-router'
@@ -38,7 +37,7 @@ export default class MoreMenu extends React.Component {
     render () {
         return (
             <li className={ClassNames(styles.headMenuItem, styles.moreMeun)}>
-                <Icon type="more_vert" onClick={this.handleTouchTap} />
+                <i className="fa fa-ellipsis-h" onClick={this.handleTouchTap} />
                 <Popover open={this.state.open} anchorEl={this.state.anchorEl} anchorOrigin={{horizontal: 'middle', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'middle', vertical: 'top'}} onRequestClose={this.handleRequestClose}>
                     <Menu onItemTouchTap={this.handleMenuItemClick}>

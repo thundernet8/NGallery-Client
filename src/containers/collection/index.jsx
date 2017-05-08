@@ -4,7 +4,6 @@ import { Link }                     from 'react-router'
 import ClassNames                   from 'classnames'
 import * as styles                  from './style.scss'
 import randColor                    from '../../utils/randColor'
-import Icon                         from '../../components/icon'
 import InfiniteScroll               from 'react-limited-infinite-scroll'
 import LineLoader                   from '../../components/lineLoader'
 import Actions                      from '../../actions'
@@ -117,13 +116,13 @@ class CollectionPage extends React.Component {
                                             <Link to={`/user/${post.lastReviewer.id}`}>{post.lastReviewer.name}</Link>最近留下了足迹
                                         </div>}
                                         <div className="pull-right">
-                                            <span className={styles.comments}><Icon type="chat_bubble" />{post.commentsCount}</span>
+                                            <span className={styles.comments}><i className="fa fa-comments" />{post.commentsCount}</span>
                                         </div>
                                     </div>
                                     <div className={ClassNames(styles.footer, 'clearfix')}>
                                         <div className={ClassNames(styles.upvote, 'pull-left')}>
                                             <a href="javascript:;">
-                                                <Icon type="arrow_drop_up" />
+                                                <i className="fa fa-caret-up" />
                                                 <span className={styles.count}>{post.likes}</span>
                                             </a>
                                         </div>
@@ -136,7 +135,7 @@ class CollectionPage extends React.Component {
                                             <p>{`${post.views}人浏览本图集`}</p>
                                         </div>
                                         <div className={ClassNames(styles.actions, 'pull-right')}>
-                                            <span className="btn-primary" title="添加至收藏">+ <Icon type="turned_in_not" /></span>
+                                            <span className="btn-primary" title="添加至收藏">+ <i className="fa fa-bookmark-o" /></span>
                                         </div>
                                     </div>
                                 </div>

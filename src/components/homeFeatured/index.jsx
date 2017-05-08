@@ -4,7 +4,6 @@ import { connect }                          from 'react-redux'
 import ClassNames                           from 'classnames'
 import * as styles                          from './style.scss'
 import defaultAvatar                        from '../../assets/images/avatar.png'
-import Icon                                 from '../icon'
 import randColor                            from '../../utils/randColor'
 import Actions                              from '../../actions'
 
@@ -20,15 +19,15 @@ class HomeFeatured extends React.Component {
                 <div key={index} className={ClassNames(styles.item, 'col-lg-4 col-md-4 col-sm-6 col-xs-12')}>
                     <div className={styles.card} style={{backgroundColor: randColor()}}>
                         <h2>{post.title}</h2>
-                        <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
+                        <span className={styles.saveBtn} title="添加至收藏">+ <i className="fa fa-bookmark-o" /></span>
                         <Link className={styles.imgLink} to={`/p/${post.id}`}><img srcSet="" src={post.featuredImage.url} alt="" title={post.title} /></Link>
                         <div className={styles.metabox}>
                             <Link className={styles.authorLink} to={`/user/${post.author.id}`}><img className={styles.authorAvatar} src={post.author.avatar} /><span>{post.author.nickname}</span></Link>
                             <div className={styles.counts}>
-                                <em><Icon type="favorite_border" />{post.likes}</em>
-                                <em><Icon type="visibility" />{post.views}</em>
+                                <em><i className="fa fa-heart" />{post.likes}</em>
+                                <em><i className="fa fa-eye" />{post.views}</em>
                                 {/* <em><Icon type="turned_in_not" />8</em> favorites count */}
-                                <em><Icon type="chat_bubble_outline" />{post.commentsCount}</em>
+                                <em><i className="fa fa-comments" />{post.commentsCount}</em>
                             </div>
                         </div>
                     </div>

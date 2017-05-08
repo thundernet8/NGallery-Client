@@ -4,7 +4,6 @@ import * as styles                                          from './style.scss'
 import Popover                                              from 'material-ui/Popover'
 import Menu                                                 from 'material-ui/Menu'
 import MenuItem                                             from 'material-ui/MenuItem'
-import Icon                                                 from '../icon'
 import defaultAvatar                                        from '../../assets/images/avatar.png'
 import appConfig                                            from '../../../config'
 import createBrowserHistory                                 from 'history/lib/createBrowserHistory'
@@ -58,7 +57,7 @@ export default class HeadSearchBox extends React.Component {
         return (
             <div className={styles.headSearchWrap}>
                 <div className={ClassNames(styles.headSearch, {[styles.focus]: this.state.focus})}>
-                    <Icon className={styles.searchIcon} type="search" style={{position: 'absolute'}} />
+                    <i className={ClassNames(styles.searchIcon, 'fa fa-search')} type="search" style={{position: 'absolute'}} />
                     <input type="text" autoComplete="off" className={styles.searchInput} placeholder="Search more..." spellCheck="false" value={this.state.search} onChange={this.onChange} onFocus={this.onFocus} onBlur={this.onBlur} onKeyPress={this.onKeyPress} />
                 </div>
             </div>

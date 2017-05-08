@@ -4,7 +4,6 @@ import { connect }                          from 'react-redux'
 import ClassNames                           from 'classnames'
 import * as styles                          from './style.scss'
 import defaultAvatar                        from '../../assets/images/avatar.png'
-import Icon                                 from '../icon'
 import randColor                            from '../../utils/randColor'
 import Actions                              from '../../actions'
 

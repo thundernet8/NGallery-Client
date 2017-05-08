@@ -1,7 +1,6 @@
 import React, { PropTypes }                                     from 'react'
 import ClassNames                                               from 'classnames'
 import * as styles                                              from './style.scss'
-import RaisedButton                                             from 'material-ui/RaisedButton'
 import appConfig                                                from '../../../config'
 import banner                                                   from '../../assets/images/gallery.jpg'
 import bannerGray                                                   from '../../assets/images/gallery-gray.jpg'

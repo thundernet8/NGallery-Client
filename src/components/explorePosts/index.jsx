@@ -6,7 +6,6 @@ import * as styles                      from '../latestPosts/style.scss'
 import Actions                          from '../../actions'
 import Masonry                          from 'react-masonry-infinite'
 import randColor                        from '../../utils/randColor'
-import Icon                             from '../icon'
 import LineLoader                       from '../lineLoader'
 
 const sizes = [{ columns: 1, gutter: 20 },

@@ -1,7 +1,6 @@
 import React, { PropTypes }                                 from 'react'
 import ClassNames                                           from 'classnames'
 import * as styles                                          from './style.scss'
-import Icon                                                 from '../icon'
 import appConfig                                            from '../../../config'
 import { Link }                                             from 'react-router'
 
@@ -52,7 +51,7 @@ export default class CategoryMenu extends React.Component {
                             </ul>
                         </div>
                     </div>
-                    <div className={styles.allTagsLink}><Link to="/posts">查看全部<Icon type="chevron_right" /></Link></div>
+                    <div className={styles.allTagsLink}><Link to="/posts">查看全部<i className="fa fa-angle-right" /></Link></div>
                 </div>
             </li>
         )

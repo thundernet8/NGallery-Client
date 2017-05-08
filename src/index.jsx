@@ -6,11 +6,7 @@ import { combineReducers }                                      from 'redux'
 import configureStore                                           from './store/configureStore'
 import createRouter                                             from './routes'
 import LocalProvider                                            from './i18n/provider'
-import ThemeProvider                                            from './components/muiTheme'
-import injectTapEventPlugin                                     from 'react-tap-event-plugin'
 import './styles/global/global.scss'
-
-injectTapEventPlugin()
 
 let store = configureStore(window.__initState__)
 
@@ -24,12 +20,10 @@ if (module.hot) {
 }
 
 ReactDOM.render(
-    <ThemeProvider>
-        <LocalProvider language={navigator.language}>
-            <Provider store={store}>
-                {createRouter(createBrowserHistory(), (me.profile && me.profile.id) ? me : null)}
-            </Provider>
-        </LocalProvider>
-    </ThemeProvider>,
+    <LocalProvider language={navigator.language}>
+        <Provider store={store}>
+            {createRouter(createBrowserHistory(), (me.profile && me.profile.id) ? me : null)}
+        </Provider>
+    </LocalProvider>,
     document.getElementById('app')
 )

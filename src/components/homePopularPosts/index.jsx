@@ -6,7 +6,6 @@ import * as styles                      from './style.scss'
 import Actions                          from '../../actions'
 import Masonry                          from 'react-masonry-infinite'
 import randColor                        from '../../utils/randColor'
-import Icon                             from '../icon'
 import LineLoader                       from '../lineLoader'
 
 const sizes = [{ columns: 1, gutter: 20 },
@@ -58,14 +57,14 @@ class HomePopularPosts extends React.Component {
                 <div key={index} className={ClassNames(styles.masonryBox, 'animated scaleFadeIn')} style={{width: 'calc((100% - 40px) / 3)', background: randColor()}}>
                     <div className={styles.boxInner} style={{background: randColor()}}>
                         <h2>{post.title}</h2>
-                        <span className={styles.saveBtn} title="添加至收藏">+ <Icon type="turned_in_not" /></span>
+                        <span className={styles.saveBtn} title="添加至收藏">+ <i className="fa fa-bookmark-o" /></span>
                         <Link className={styles.imgLink} to={`/p/${post.id}`}><img onLoad={this.handleImageLoad} srcSet="" src={post.featuredImage.url} alt="" title={post.title} /></Link>
                         <div className={styles.metabox}>
                             <Link className={styles.authorLink} to={`/user/${post.author.id}`}><img className={styles.authorAvatar} src={post.author.avatar} /><span>{post.author.nickname}</span></Link>
                             <div className={styles.counts}>
-                                <em><Icon type="favorite_border" />{post.likes}</em>
-                                <em><Icon type="visibility" />{post.views}</em>
-                                <em><Icon type="chat_bubble_outline" />{post.commentsCount}</em>
+                                <em><i className="fa fa-heart" />{post.likes}</em>
+                                <em><i className="fa fa-eye" />{post.views}</em>
+                                <em><i className="fa fa-comments" />{post.commentsCount}</em>
                             </div>
                         </div>
                     </div>

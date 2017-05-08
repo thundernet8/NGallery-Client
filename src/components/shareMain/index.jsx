@@ -5,7 +5,6 @@ import ClassNames                   from 'classnames'
 import * as styles                  from '../../containers/share/style.scss'
 import Actions                      from '../../actions'
 import randColor                    from '../../utils/randColor'
-import Icon                         from '../icon'
 import InfiniteScroll               from 'react-limited-infinite-scroll'
 import LineLoader                   from '../lineLoader'
 import Spinner                      from '../spinner'
@@ -68,12 +67,12 @@ class ShareListMain extends React.Component {
                         </div>
                         <div className={ClassNames(styles.footer, 'clearfix')}>
                             <div className="pull-left">
-                                <span className={styles.date}><Icon type="schedule" />{dateFormatter.asString('yyyy-MM-dd', new Date(share.createdAt))}</span>
-                                <span className={styles.author}><Icon type="perm_identity" /><Link to={`/user/${share.author.id}`}>{share.author.nickname}</Link></span>
+                                <span className={styles.date}><i className="fa fa-clock" />{dateFormatter.asString('yyyy-MM-dd', new Date(share.createdAt))}</span>
+                                <span className={styles.author}><i className="fa fa-user" /><Link to={`/user/${share.author.id}`}>{share.author.nickname}</Link></span>
                             </div>
                             <div className="pull-right">
-                                <span className={styles.views}><Icon type="visibility" />{share.views}</span>
-                                <span className={styles.likes}><Icon type="favorite_border" />{share.likes}</span>
+                                <span className={styles.views}><i className="fa fa-eye" />{share.views}</span>
+                                <span className={styles.likes}><i className="fa fa-heart" />{share.likes}</span>
                             </div>
                         </div>
                     </div>

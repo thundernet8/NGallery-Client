@@ -4,7 +4,6 @@ import * as styles                                          from './style.scss'
 import Popover                                              from 'material-ui/Popover'
 import Menu                                                 from 'material-ui/Menu'
 import MenuItem                                             from 'material-ui/MenuItem'
-import Icon                                                 from '../icon'
 
 export default class SubmitMenu extends React.Component {
     state = {
@@ -30,7 +29,7 @@ export default class SubmitMenu extends React.Component {
     render () {
         return (
             <li className={ClassNames(styles.headMenuItem, styles.submitBtn)}>
-                <Icon type="add_circle_outline" onClick={this.handleTouchTap} />
+                <i className="fa fa-plus-circle" onClick={this.handleTouchTap} />
                 <Popover open={this.state.open} anchorEl={this.state.anchorEl} anchorOrigin={{horizontal: 'middle', vertical: 'bottom'}}
                     targetOrigin={{horizontal: 'middle', vertical: 'top'}} onRequestClose={this.handleRequestClose}>
                     <Menu>
